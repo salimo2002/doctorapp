@@ -12,17 +12,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Baraa Demo',
       theme: ThemeData(
-      
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: '** Demo Home Page'),
+      home: const MyHomePage(title: '*BARAA'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
 
   final String title;
 
