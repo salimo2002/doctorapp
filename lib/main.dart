@@ -13,8 +13,13 @@ class DoctorApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
-          title: const Text('Doctor App'),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 99, 21, 82),
+          title: const Text('المستشار الطبي'),
+          titleTextStyle: TextStyle(
+            color: const Color.fromARGB(223, 240, 236, 236),
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
