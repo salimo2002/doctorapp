@@ -1,26 +1,55 @@
+import 'package:doctorapp/view/chat_view.dart';
+import 'package:doctorapp/view/favorite_view.dart';
+import 'package:doctorapp/view/home_view.dart';
+import 'package:doctorapp/view/hospitals_view.dart';
+import 'package:doctorapp/view/profile_view.dart';
+import 'package:doctorapp/widgets/custom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main(List<String> args) {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black,
+      systemNavigationBarIconBrightness: Brightness.light,
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
   runApp(const DoctorApp());
 }
 
-class DoctorApp extends StatelessWidget {
+class DoctorApp extends StatefulWidget {
   const DoctorApp({super.key});
 
+  @override
+  State<DoctorApp> createState() => _DoctorAppState();
+}
+
+class _DoctorAppState extends State<DoctorApp> {
+  List<Widget> pages = [
+    HomeView(),
+    ChatView(),
+    HospitalsView(),
+    FavoriteView(),
+    ProfileView(),
+  ];
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 99, 21, 82),
-          title: const Text('المستشار الطبي'),
-          titleTextStyle: TextStyle(
-            color: const Color.fromARGB(223, 240, 236, 236),
-            fontWeight: FontWeight.bold,
-          ),
+        bottomNavigationBar: CustomNavBar(
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
         ),
+        body: IndexedStack(index: currentIndex, children: pages),
       ),
     );
   }
