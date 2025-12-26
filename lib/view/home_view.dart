@@ -1,4 +1,6 @@
+import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -10,7 +12,17 @@ class HomeView extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Colors.blue.shade100, Colors.blue.shade50, Colors.white],
+          colors: [
+            Theme.of(context).colorScheme.surfaceTint,
+            Theme.of(context).colorScheme.surfaceDim,
+            Theme.of(context).colorScheme.surfaceBright,
+          ],
+        ),
+      ),
+      child: Center(
+        child: Column(mainAxisSize: MainAxisSize.max, children: [
+            
+          ],
         ),
       ),
     );

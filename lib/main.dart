@@ -1,3 +1,5 @@
+import 'package:doctorapp/theme/theme.dart';
+import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/chat_view.dart';
 import 'package:doctorapp/view/favorite_view.dart';
 import 'package:doctorapp/view/home_view.dart';
@@ -6,6 +8,7 @@ import 'package:doctorapp/view/profile_view.dart';
 import 'package:doctorapp/widgets/custom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 void main(List<String> args) {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +20,12 @@ void main(List<String> args) {
       statusBarIconBrightness: Brightness.dark,
     ),
   );
-  runApp(const DoctorApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const DoctorApp(),
+    ),
+  );
 }
 
 class DoctorApp extends StatefulWidget {
@@ -39,6 +47,7 @@ class _DoctorAppState extends State<DoctorApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: Provider.of<ThemeProvider>(context).currentTheme,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         bottomNavigationBar: CustomNavBar(
