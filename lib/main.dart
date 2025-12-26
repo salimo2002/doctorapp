@@ -1,4 +1,3 @@
-import 'package:doctorapp/theme/theme.dart';
 import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/chat_view.dart';
 import 'package:doctorapp/view/favorite_view.dart';
