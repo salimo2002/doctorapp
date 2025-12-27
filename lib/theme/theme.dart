@@ -8,6 +8,7 @@ ThemeData darkMode = ThemeData(
     surfaceTint: Colors.black,
     surfaceDim: Colors.black,
     surfaceBright: Colors.black,
+    scrim: Colors.grey.shade900,
   ),
 );
 ThemeData lightMode = ThemeData(
@@ -18,5 +19,6 @@ ThemeData lightMode = ThemeData(
     surfaceTint: Colors.blue.shade100,
     surfaceDim: Colors.blue.shade50,
     surfaceBright: Colors.white,
+    scrim: Colors.white,
   ),
 );

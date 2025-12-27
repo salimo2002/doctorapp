@@ -7,7 +7,7 @@ import 'package:doctorapp/view/profile_view.dart';
 import 'package:doctorapp/widgets/custom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart'; //eroor
+import 'package:provider/provider.dart';
 
 void main(List<String> args) {
   WidgetsFlutterBinding.ensureInitialized();
