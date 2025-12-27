@@ -79,9 +79,19 @@ class HomeView extends StatelessWidget {
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        Provider.of<ThemeProvider>(context,listen: false).toggleTheme();
+                        Provider.of<ThemeProvider>(
+                          context,
+                          listen: false,
+                        ).toggleTheme();
                       },
-                      child: Text('Dark Or Light'),
+                      child: Text(
+                        'Dark Or Light',
+                        style: TextStyle(
+                          // color: Colors.white,
+                          // fontSize: 18,
+                          // fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ],
