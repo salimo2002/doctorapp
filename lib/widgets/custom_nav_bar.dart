@@ -33,7 +33,7 @@ class CustomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.local_hospital_outlined),
-          label: 'الصيدلية',
+          label: 'الصيدليات',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite_border),
