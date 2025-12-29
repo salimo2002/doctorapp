@@ -76,24 +76,6 @@ class HomeView extends StatelessWidget {
                     style: AppStyle.customText(context, 16, FontWeight.normal),
                     textDirection: TextDirection.rtl,
                   ),
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Provider.of<ThemeProvider>(
-                          context,
-                          listen: false,
-                        ).toggleTheme();
-                      },
-                      child: Text(
-                        'Dark Or Light',
-                        style: TextStyle(
-                          // color: Colors.white,
-                          // fontSize: 18,
-                          // fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
