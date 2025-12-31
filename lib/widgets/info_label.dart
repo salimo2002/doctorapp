@@ -13,7 +13,7 @@ class InfoLabel extends StatelessWidget {
       children: [
         Text(
           label,
-          style: AppStyle.customText(context, 22, FontWeight.bold),
+          style: AppStyle.customText(context, 20, FontWeight.bold),
         ),
         Icon(icon, color: Colors.amber),
       ],

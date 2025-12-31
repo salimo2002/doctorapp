@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
                 SizedBox(width: 20),
                 Text(
                   'الرئيسية',
-                  style: AppStyle.customText(context, 30, FontWeight.bold),
+                  style: AppStyle.customText(context, 28, FontWeight.bold),
                 ),
                 Spacer(),
                 Icon(
@@ -38,13 +38,13 @@ class HomeView extends StatelessWidget {
                 SizedBox(height: 10),
                 Text(
                   '⚫️ لايجب استخدام الايبو بروفين على معدة فارغة',
-                  style: AppStyle.customText(context, 18, FontWeight.normal),
+                  style: AppStyle.customText(context, 16, FontWeight.normal),
                   textDirection: TextDirection.rtl,
                 ),
                 SizedBox(height: 5),
                 Text(
                   '⚫️ الانتباه لعدم تناول جرغات كبيرة من الايبو بروفين',
-                  style: AppStyle.customText(context, 18, FontWeight.normal),
+                  style: AppStyle.customText(context, 16, FontWeight.normal),
                   textDirection: TextDirection.rtl,
                 ),
               ],
@@ -58,24 +58,24 @@ class HomeView extends StatelessWidget {
                 SizedBox(height: 5),
                 Text(
                   'باراسيتامول  ',
-                  style: AppStyle.customText(context, 22, FontWeight.bold),
+                  style: AppStyle.customText(context, 20, FontWeight.bold),
                 ),
                 SizedBox(height: 5),
                 Text(
                   '⚫️ مسكن وخافض للحرارة',
-                  style: AppStyle.customText(context, 18, FontWeight.normal),
+                  style: AppStyle.customText(context, 16, FontWeight.normal),
                   textDirection: TextDirection.rtl,
                 ),
                 SizedBox(height: 5),
                 Text(
                   '⚫️ لاينصح بتناول اكثر من 4 جرعات يوميا',
-                  style: AppStyle.customText(context, 18, FontWeight.normal),
+                  style: AppStyle.customText(context, 16, FontWeight.normal),
                   textDirection: TextDirection.rtl,
                 ),
                 SizedBox(height: 5),
                 Text(
                   '⚫️ الجرعة الزائدة تؤذي الكبد',
-                  style: AppStyle.customText(context, 18, FontWeight.normal),
+                  style: AppStyle.customText(context, 16, FontWeight.normal),
                   textDirection: TextDirection.rtl,
                 ),
               ],
