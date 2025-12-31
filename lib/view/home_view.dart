@@ -1,6 +1,7 @@
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/info_label.dart';
+import 'package:doctorapp/widgets/midical_search_text_field.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -32,40 +33,7 @@ class HomeView extends StatelessWidget {
             SizedBox(height: 25),
             SizedBox(
               height: 40,
-              child: TextField(
-                onTap: () {},
-                textDirection: TextDirection.rtl,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  hint: Text(
-                    'ابحث عن دواء',
-                    textDirection: TextDirection.rtl,
-                    style: AppStyle.customText(context, 18, FontWeight.normal),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 10,
-                  ),
-                  fillColor: Colors.white30,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                ),
-              ),
+              child: MidicalSearchTextField(),
             ),
             CustomContainer(
               cheldreen: [
