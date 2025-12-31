@@ -6,7 +6,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 18),
+      margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.scrim,

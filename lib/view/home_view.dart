@@ -23,11 +23,49 @@ class HomeView extends StatelessWidget {
                 ),
                 Spacer(),
                 Icon(
-                  Icons.waving_hand_sharp,
+                  Icons.home_work,
                   color: Theme.of(context).colorScheme.primary,
                   size: 50,
                 ),
               ],
+            ),
+            SizedBox(height: 25),
+            SizedBox(
+              height: 40,
+              child: TextField(
+                onTap: () {},
+                textDirection: TextDirection.rtl,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  hint: Text(
+                    'ابحث عن دواء',
+                    textDirection: TextDirection.rtl,
+                    style: AppStyle.customText(context, 18, FontWeight.normal),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 10,
+                  ),
+                  fillColor: Colors.white30,
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ),
             ),
             CustomContainer(
               cheldreen: [
