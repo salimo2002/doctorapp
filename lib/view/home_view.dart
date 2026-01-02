@@ -2,6 +2,7 @@ import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/info_label.dart';
 import 'package:doctorapp/widgets/midical_search_text_field.dart';
+import 'package:doctorapp/widgets/small_categories.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -12,7 +13,7 @@ class HomeView extends StatelessWidget {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: ListView(
           children: [
             Row(
@@ -30,11 +31,8 @@ class HomeView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 25),
-            SizedBox(
-              height: 40,
-              child: MidicalSearchTextField(),
-            ),
+            SizedBox(height: 10),
+            SizedBox(height: 40, child: MidicalSearchTextField()),
             CustomContainer(
               cheldreen: [
                 InfoLabel(
@@ -86,6 +84,8 @@ class HomeView extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: 10),
+            SizedBox(height: 40, child: SmallCategories()),
           ],
         ),
       ),

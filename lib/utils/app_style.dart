@@ -12,6 +12,18 @@ class AppStyle {
       color: Theme.of(context).colorScheme.tertiary,
     );
   }
+  static TextStyle containerText(
+    BuildContext context,
+    double size,
+    FontWeight fontWeight,
+    Color color
+  ) {
+    return TextStyle(
+      fontSize: MediaQuery.of(context).textScaler.scale(size),
+      fontWeight: fontWeight,
+      color: color,
+    );
+  }
 
   static BoxDecoration decoratedBackground(BuildContext context) {
     return BoxDecoration(
