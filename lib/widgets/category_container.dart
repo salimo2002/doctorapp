@@ -32,7 +32,7 @@ class CategoryContainer extends StatelessWidget {
             Icon(
               icon,
               color: isSelected
-                  ? Theme.of(context).colorScheme.scrim
+                  ? Theme.of(context).colorScheme.onPrimary
                   : Theme.of(context).colorScheme.tertiary,
             ),
             Text(
@@ -42,7 +42,7 @@ class CategoryContainer extends StatelessWidget {
                 16,
                 FontWeight.normal,
                 isSelected
-                    ? Theme.of(context).colorScheme.scrim
+                    ? Theme.of(context).colorScheme.onPrimary
                     : Theme.of(context).colorScheme.tertiary,
               ),
             ),

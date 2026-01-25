@@ -27,7 +27,7 @@ class HomeView extends StatelessWidget {
                 Icon(
                   Icons.home_work,
                   color: Theme.of(context).colorScheme.primary,
-                  size: 50,
+                  size: 40,
                 ),
               ],
             ),
