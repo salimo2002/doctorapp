@@ -2,7 +2,7 @@ import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/chat_view.dart';
 import 'package:doctorapp/view/favorite_view.dart';
 import 'package:doctorapp/view/home_view.dart';
-import 'package:doctorapp/view/hospitals_view.dart';
+import 'package:doctorapp/view/pharmacies_view.dart';
 import 'package:doctorapp/view/profile_view.dart';
 import 'package:doctorapp/widgets/custom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class _DoctorAppState extends State<DoctorApp> {
   List<Widget> pages = [
     HomeView(),
     ChatView(),
-    HospitalsView(),
+    PharmaciesView(),
     FavoriteView(),
     ProfileView(),
   ];
