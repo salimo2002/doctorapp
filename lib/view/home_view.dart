@@ -19,15 +19,15 @@ class HomeView extends StatelessWidget {
             Row(
               children: [
                 SizedBox(width: 20),
+                Icon(
+                  Icons.home_work_outlined,
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 40,
+                ),
+                Spacer(),
                 Text(
                   'الرئيسية',
                   style: AppStyle.customText(context, 28, FontWeight.bold),
-                ),
-                Spacer(),
-                Icon(
-                  Icons.home_work,
-                  color: Theme.of(context).colorScheme.primary,
-                  size: 40,
                 ),
               ],
             ),

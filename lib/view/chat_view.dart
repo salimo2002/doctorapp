@@ -2,6 +2,7 @@ import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/chat_bubble.dart';
 import 'package:doctorapp/widgets/chat_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class ChatView extends StatelessWidget {
   const ChatView({super.key});
@@ -17,15 +18,15 @@ class ChatView extends StatelessWidget {
             Row(
               children: [
                 SizedBox(width: 20),
+                Lottie.asset(
+                  'assets/animations/robot hello.json',
+                  width: 80,
+                  height: 80,
+                ),
+                Spacer(),
                 Text(
                   'المساعد الذكي',
                   style: AppStyle.customText(context, 28, FontWeight.bold),
-                ),
-                Spacer(),
-                Icon(
-                  Icons.message,
-                  color: Theme.of(context).colorScheme.primary,
-                  size: 40,
                 ),
               ],
             ),
@@ -53,12 +54,7 @@ class ChatView extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(
-                  child: SizedBox(
-                    height: 45,
-                    child: ChatTextField(),
-                  ),
-                ),
+                Expanded(child: SizedBox(height: 45, child: ChatTextField())),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(
