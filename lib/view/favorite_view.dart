@@ -13,21 +13,13 @@ class FavoriteView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: ListView(
           children: [
-            Row(
-              children: [
-                SizedBox(width: 20),
-                Icon(
-                  Icons.favorite,
-                  color: Theme.of(context).colorScheme.primary,
-                  size: 40,
-                ),
-                Spacer(),
-                Text(
-                  'المفضلة',
-                  style: AppStyle.customText(context, 28, FontWeight.bold),
-                ),
-              ],
+            Center(
+              child: Text(
+                'المفضلة',
+                style: AppStyle.customText(context, 28, FontWeight.bold),
+              ),
             ),
+
             SizedBox(height: 10),
             NoFavoriteMedicines(),
           ],

@@ -1,6 +1,7 @@
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/info_label.dart';
+import 'package:doctorapp/widgets/medicine_container.dart';
 import 'package:doctorapp/widgets/search_text_field.dart';
 import 'package:doctorapp/widgets/small_categories.dart';
 import 'package:flutter/material.dart';
@@ -16,20 +17,11 @@ class HomeView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: ListView(
           children: [
-            Row(
-              children: [
-                SizedBox(width: 20),
-                Icon(
-                  Icons.home_work_outlined,
-                  color: Theme.of(context).colorScheme.primary,
-                  size: 40,
-                ),
-                Spacer(),
-                Text(
-                  'الرئيسية',
-                  style: AppStyle.customText(context, 28, FontWeight.bold),
-                ),
-              ],
+            Center(
+              child: Text(
+                'الرئيسية',
+                style: AppStyle.customText(context, 28, FontWeight.bold),
+              ),
             ),
             SizedBox(height: 10),
             SizedBox(
@@ -94,6 +86,15 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: 10),
             SizedBox(height: 40, child: SmallCategories()),
+            SizedBox(height: 12),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 19,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return MedicineContainer();
+              },
+            ),
           ],
         ),
       ),

@@ -14,19 +14,25 @@ class _ProfileViewState extends State<ProfileView> {
   bool isDark = false;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        decoration: AppStyle.decoratedBackground(context),
-        child: Switch(
-          value: isDark,
-          onChanged: (value) {
-            setState(() {
-              isDark = value;
-              Provider.of<ThemeProvider>(context,listen: false).toggleTheme();
-            });
-          },
+    return ListView(
+      children: [
+        Container(
+          decoration: AppStyle.decoratedBackground(context),
+          child: Switch(
+            value: isDark,
+            onChanged: (value) {
+              setState(() {
+                isDark = value;
+                Provider.of<ThemeProvider>(
+                  context,
+                  listen: false,
+                ).toggleTheme();
+              });
+            },
+          ),
         ),
-      ),
+        
+      ],
     );
   }
 }
