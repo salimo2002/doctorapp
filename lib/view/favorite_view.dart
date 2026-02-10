@@ -10,8 +10,8 @@ class FavoriteView extends StatelessWidget {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        child: ListView(
+        padding: const EdgeInsets.only(left: 12, right: 12, top: 50),
+        child: Column(
           children: [
             Center(
               child: Text(
@@ -19,9 +19,12 @@ class FavoriteView extends StatelessWidget {
                 style: AppStyle.customText(context, 28, FontWeight.bold),
               ),
             ),
-
-            SizedBox(height: 10),
-            NoFavoriteMedicines(),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.only(top: 5),
+                children: [NoFavoriteMedicines()],
+              ),
+            ),
           ],
         ),
       ),

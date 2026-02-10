@@ -11,8 +11,8 @@ class PharmaciesView extends StatelessWidget {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        child: ListView(
+        padding: const EdgeInsets.only(left: 12, right: 12, top: 50),
+        child: Column(
           children: [
             Center(
               child: Text(
@@ -30,23 +30,30 @@ class PharmaciesView extends StatelessWidget {
                 ontap: () {},
               ),
             ),
-            PharmacyContainer(
-              pharmacyLabel: 'صيدلية اليرموك',
-              isOpen: true,
-              pharmacyLocation: () {},
-              location: 'شارع الحضارة - مقابل مجمع اليرموك',
-              address: 'الرياض',
-              workingHours: 'من الساعة 8:00 صباحا حتى 10:00 مساء',
-              phoneNumber: '0988818024',
-            ),
-            PharmacyContainer(
-              pharmacyLabel: 'صيدلية اليرموك',
-              isOpen: false,
-              pharmacyLocation: () {},
-              location: 'شارع الحضارة - مقابل مجمع اليرموك',
-              address: 'الرياض',
-              workingHours: 'من الساعة 8:00 صباحا حتى 10:00 مساء',
-              phoneNumber: '0988818024',
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.only(top: 5),
+                children: [
+                  PharmacyContainer(
+                    pharmacyLabel: 'صيدلية اليرموك',
+                    isOpen: true,
+                    pharmacyLocation: () {},
+                    location: 'شارع الحضارة - مقابل مجمع اليرموك',
+                    address: 'الرياض',
+                    workingHours: 'من الساعة 8:00 صباحا حتى 10:00 مساء',
+                    phoneNumber: '0988818024',
+                  ),
+                  PharmacyContainer(
+                    pharmacyLabel: 'صيدلية اليرموك',
+                    isOpen: false,
+                    pharmacyLocation: () {},
+                    location: 'شارع الحضارة - مقابل مجمع اليرموك',
+                    address: 'الرياض',
+                    workingHours: 'من الساعة 8:00 صباحا حتى 10:00 مساء',
+                    phoneNumber: '0988818024',
+                  ),
+                ],
+              ),
             ),
           ],
         ),

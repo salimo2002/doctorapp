@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStyle {
+  static const double contextText = 17;
   static TextStyle customText(
     BuildContext context,
     double size,
@@ -12,11 +13,12 @@ class AppStyle {
       color: Theme.of(context).colorScheme.tertiary,
     );
   }
+
   static TextStyle containerText(
     BuildContext context,
     double size,
     FontWeight fontWeight,
-    Color color
+    Color color,
   ) {
     return TextStyle(
       fontSize: MediaQuery.of(context).textScaler.scale(size),

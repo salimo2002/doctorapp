@@ -9,22 +9,18 @@ class MedicineContainer extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black, width: .5),
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white12,
+        color: Theme.of(context).colorScheme.scrim,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Row(
             children: [
-              Image.asset(
-                'assets/images/pill.png',
-                height: 30,
-                color: const Color.fromARGB(255, 51, 120, 176),
-              ),
+              Icon(Icons.favorite_border_outlined),
               Spacer(),
               Text(
                 'Paracetamol - باراسيتامول',
@@ -39,21 +35,33 @@ class MedicineContainer extends StatelessWidget {
           ),
           Text(
             'شركة ابن الهيثم',
-            style: AppStyle.customText(context, 16, FontWeight.normal),
+            style: AppStyle.customText(
+              context,
+              AppStyle.contextText,
+              FontWeight.normal,
+            ),
           ),
           Text(
             'يعالج صداع الرأس والحمى',
-            style: AppStyle.customText(context, 16, FontWeight.normal),
+            style: AppStyle.customText(
+              context,
+              AppStyle.contextText,
+              FontWeight.normal,
+            ),
           ),
           Text(
             'يستخدم في حالات الالم البسيطة الى المتوسطة',
-            style: AppStyle.customText(context, 16, FontWeight.normal),
+            style: AppStyle.customText(
+              context,
+              AppStyle.contextText,
+              FontWeight.normal,
+            ),
           ),
           Text(
             'الجرعات العالية قد تسبب تضرر الكبد',
             style: AppStyle.containerText(
               context,
-              16,
+              AppStyle.contextText,
               FontWeight.w800,
               Colors.red,
             ),
@@ -62,7 +70,7 @@ class MedicineContainer extends StatelessWidget {
             'لا يحتاج الباراسيتامول إلى وصفة طبية',
             style: AppStyle.containerText(
               context,
-              16,
+              AppStyle.contextText,
               FontWeight.w800,
               Colors.green,
             ),

@@ -12,7 +12,7 @@ class InfoLabel extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(label, style: AppStyle.customText(context, 20, FontWeight.bold)),
-        Icon(icon, color: Colors.blue.shade700),
+        Icon(icon, color: Colors.amber),
       ],
     );
   }
