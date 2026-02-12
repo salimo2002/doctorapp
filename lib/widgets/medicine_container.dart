@@ -28,7 +28,7 @@ class MedicineContainer extends StatelessWidget {
                   context,
                   18,
                   FontWeight.bold,
-                  Colors.blue.shade700,
+                  Colors.blue.shade500,
                 ),
               ),
             ],
@@ -38,7 +38,7 @@ class MedicineContainer extends StatelessWidget {
             style: AppStyle.customText(
               context,
               AppStyle.contextText,
-              FontWeight.normal,
+              FontWeight.w700,
             ),
           ),
           Text(
@@ -46,7 +46,7 @@ class MedicineContainer extends StatelessWidget {
             style: AppStyle.customText(
               context,
               AppStyle.contextText,
-              FontWeight.normal,
+              FontWeight.w700,
             ),
           ),
           Text(
@@ -54,7 +54,7 @@ class MedicineContainer extends StatelessWidget {
             style: AppStyle.customText(
               context,
               AppStyle.contextText,
-              FontWeight.normal,
+              FontWeight.w700,
             ),
           ),
           Text(

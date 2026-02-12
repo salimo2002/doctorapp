@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
       child: Padding(
-        padding: const EdgeInsets.only(left: 12, right: 12, top: 50),
+        padding: const EdgeInsets.only(left: 12, right: 12, top: 40),
         child: Column(
           children: [
             Center(
@@ -50,7 +50,7 @@ class HomeView extends StatelessWidget {
                         style: AppStyle.customText(
                           context,
                           AppStyle.contextText,
-                          FontWeight.normal,
+                          FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
                       ),
@@ -60,7 +60,7 @@ class HomeView extends StatelessWidget {
                         style: AppStyle.customText(
                           context,
                           AppStyle.contextText,
-                          FontWeight.normal,
+                          FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
                       ),
@@ -87,7 +87,7 @@ class HomeView extends StatelessWidget {
                         style: AppStyle.customText(
                           context,
                           AppStyle.contextText,
-                          FontWeight.normal,
+                          FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
                       ),
@@ -97,7 +97,7 @@ class HomeView extends StatelessWidget {
                         style: AppStyle.customText(
                           context,
                           AppStyle.contextText,
-                          FontWeight.normal,
+                          FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
                       ),
@@ -107,7 +107,7 @@ class HomeView extends StatelessWidget {
                         style: AppStyle.customText(
                           context,
                           AppStyle.contextText,
-                          FontWeight.normal,
+                          FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
                       ),

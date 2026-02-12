@@ -8,7 +8,7 @@ ThemeData darkMode = ThemeData(
     surfaceTint: Colors.black,
     surfaceDim: Colors.black,
     surfaceBright: Colors.black,
-    scrim: Colors.grey.shade900,
+    scrim: const Color.fromARGB(255, 50, 50, 50),
     onPrimary: Colors.white,
   ),
 );

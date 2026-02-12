@@ -12,7 +12,7 @@ class ChatView extends StatelessWidget {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
       child: Padding(
-        padding: const EdgeInsets.only(left: 12, right: 12, top: 50),
+        padding: const EdgeInsets.only(left: 12, right: 12, top: 40),
         child: Column(
           children: [
             Row(

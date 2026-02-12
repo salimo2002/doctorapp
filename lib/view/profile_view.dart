@@ -16,7 +16,7 @@ class _ProfileViewState extends State<ProfileView> {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 50),
+        padding: const EdgeInsets.only(left: 12, right: 12, top: 40),
         child: Column(
           children: [
             Center(
