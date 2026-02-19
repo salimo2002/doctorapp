@@ -25,15 +25,16 @@ class _DarkOrLightModeState extends State<DarkOrLightMode> {
       },
       child: Row(
         children: [
-          Icon(
-            isDarkMode ? Icons.dark_mode : Icons.light_mode,
-            color: Colors.amber,
-            size: 30,
-          ),
+          Icon(Icons.arrow_back_ios_outlined),
           Spacer(),
           Text(
             isDarkMode ? 'الوضع الداكن' : 'الوضع الفاتح',
             style: AppStyle.customText(context, 20, FontWeight.bold),
+          ),
+          SizedBox(width: 12),
+          Icon(
+            isDarkMode ? Icons.dark_mode : Icons.light_mode,
+            color: Colors.amber,
           ),
         ],
       ),

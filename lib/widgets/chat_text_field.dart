@@ -2,24 +2,22 @@ import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bidi_text/bidi_text_field.dart';
 
-class ChatTextField extends StatefulWidget {
-  const ChatTextField({super.key});
+class ChatTextField extends StatelessWidget {
+  const ChatTextField({super.key, required this.message, required this.hint, this.suffixIcon});
 
-  @override
-  State<ChatTextField> createState() => _ChatTextFieldState();
-}
-
-class _ChatTextFieldState extends State<ChatTextField> {
-  TextEditingController message = TextEditingController();
+  final TextEditingController message;
+  final String hint;
+  final Widget? suffixIcon;
   @override
   Widget build(BuildContext context) {
     return BidiTextField(
       controller: message,
       decoration: InputDecoration(
+        suffixIcon: suffixIcon,
         fillColor: Colors.white30,
         filled: true,
         hint: Text(
-          'اكتب سؤالك هنا',
+          hint,
           textDirection: TextDirection.rtl,
           style: AppStyle.customText(context, 18, FontWeight.normal),
         ),

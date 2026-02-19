@@ -24,24 +24,24 @@ class CustomNavBar extends StatelessWidget {
       onTap: onTap,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          label: 'الرئيسية',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.chat_bubble_outline),
-          label: 'محادثة',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.local_hospital_outlined),
-          label: 'الصيدليات',
+          icon: Icon(Icons.person_2_outlined),
+          label: 'حسابي',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite_border),
           label: 'المفضلة',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person_2_outlined),
-          label: 'حسابي',
+          icon: Icon(Icons.local_hospital_outlined),
+          label: 'الصيدليات',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat_bubble_outline),
+          label: 'محادثة',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          label: 'الرئيسية',
         ),
       ],
     );

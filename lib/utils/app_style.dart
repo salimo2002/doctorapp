@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStyle {
-  static const double contextText = 17;
+  static const double contentText = 17;
   static TextStyle customText(
     BuildContext context,
     double size,

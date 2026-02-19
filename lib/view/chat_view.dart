@@ -4,9 +4,15 @@ import 'package:doctorapp/widgets/chat_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class ChatView extends StatelessWidget {
+class ChatView extends StatefulWidget {
   const ChatView({super.key});
 
+  @override
+  State<ChatView> createState() => _ChatViewState();
+}
+
+class _ChatViewState extends State<ChatView> {
+  TextEditingController message = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,7 +60,15 @@ class ChatView extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(child: SizedBox(height: 45, child: ChatTextField())),
+                Expanded(
+                  child: SizedBox(
+                    height: 45,
+                    child: ChatTextField(
+                      hint: 'اكتب سؤالك هنا',
+                      message: message,
+                    ),
+                  ),
+                ),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(

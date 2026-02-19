@@ -2,7 +2,7 @@ import 'package:doctorapp/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class ThemeProvider with ChangeNotifier {
-  ThemeData _currentTheme = darkMode;
+  ThemeData _currentTheme = lightMode;
   ThemeData get currentTheme => _currentTheme;
   set currentTheme(ThemeData theme) {
     _currentTheme = theme;

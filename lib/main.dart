@@ -1,10 +1,6 @@
 import 'package:doctorapp/theme/theme_provider.dart';
-import 'package:doctorapp/view/chat_view.dart';
-import 'package:doctorapp/view/favorite_view.dart';
-import 'package:doctorapp/view/home_view.dart';
-import 'package:doctorapp/view/pharmacies_view.dart';
-import 'package:doctorapp/view/profile_view.dart';
-import 'package:doctorapp/widgets/custom_nav_bar.dart';
+import 'package:doctorapp/view/log_in_view.dart';
+import 'package:doctorapp/view/main_views.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -27,38 +23,19 @@ void main(List<String> args) {
   );
 }
 
-class DoctorApp extends StatefulWidget {
+class DoctorApp extends StatelessWidget {
   const DoctorApp({super.key});
 
-  @override
-  State<DoctorApp> createState() => _DoctorAppState();
-}
-
-class _DoctorAppState extends State<DoctorApp> {
-  List<Widget> pages = [
-    HomeView(),
-    ChatView(),
-    PharmaciesView(),
-    FavoriteView(),
-    ProfileView(),
-  ];
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: Provider.of<ThemeProvider>(context).currentTheme,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        bottomNavigationBar: CustomNavBar(
-          currentIndex: currentIndex,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-        ),
-        body: IndexedStack(index: currentIndex, children: pages),
-      ),
+      routes: {
+        MainViews.id: (context) => MainViews(),
+        LogInView.id:(context)=> LogInView()
+        },
+      initialRoute: LogInView.id,
     );
   }
 }

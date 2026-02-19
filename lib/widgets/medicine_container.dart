@@ -37,7 +37,7 @@ class MedicineContainer extends StatelessWidget {
             'شركة ابن الهيثم',
             style: AppStyle.customText(
               context,
-              AppStyle.contextText,
+              AppStyle.contentText,
               FontWeight.w700,
             ),
           ),
@@ -45,7 +45,7 @@ class MedicineContainer extends StatelessWidget {
             'يعالج صداع الرأس والحمى',
             style: AppStyle.customText(
               context,
-              AppStyle.contextText,
+              AppStyle.contentText,
               FontWeight.w700,
             ),
           ),
@@ -53,7 +53,7 @@ class MedicineContainer extends StatelessWidget {
             'يستخدم في حالات الالم البسيطة الى المتوسطة',
             style: AppStyle.customText(
               context,
-              AppStyle.contextText,
+              AppStyle.contentText,
               FontWeight.w700,
             ),
           ),
@@ -61,7 +61,7 @@ class MedicineContainer extends StatelessWidget {
             'الجرعات العالية قد تسبب تضرر الكبد',
             style: AppStyle.containerText(
               context,
-              AppStyle.contextText,
+              AppStyle.contentText,
               FontWeight.w800,
               Colors.red,
             ),
@@ -70,7 +70,7 @@ class MedicineContainer extends StatelessWidget {
             'لا يحتاج الباراسيتامول إلى وصفة طبية',
             style: AppStyle.containerText(
               context,
-              AppStyle.contextText,
+              AppStyle.contentText,
               FontWeight.w800,
               Colors.green,
             ),

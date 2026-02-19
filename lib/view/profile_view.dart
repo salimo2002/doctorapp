@@ -26,57 +26,73 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
-            Icon(Icons.person, size: 80),
+            Image.asset(
+              'assets/images/user.png',
+              height: 150,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             Text(
-              'براءة الديب',
+              'اسم المستخدم',
               style: AppStyle.customText(context, 26, FontWeight.bold),
+            ),
+            Text(
+              'salimosalim31@gmail.com',
+              style: AppStyle.customText(context, 18, FontWeight.bold),
             ),
             CustomContainer(
               cheldreen: [
                 Row(
                   children: [
-                    Icon(Icons.person_outline),
+                    Icon(Icons.arrow_back_ios_outlined),
                     Spacer(),
                     Text(
                       'الملف الشخصي',
                       style: AppStyle.customText(context, 20, FontWeight.bold),
                     ),
+                    SizedBox(width: 12),
+                    Icon(Icons.person_outline),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 18),
                 Row(
                   children: [
-                    Icon(Icons.login_outlined),
+                    Icon(Icons.arrow_back_ios_outlined),
                     Spacer(),
                     Text(
                       'معلومات تسجيل الدخول',
                       style: AppStyle.customText(context, 20, FontWeight.bold),
                     ),
+                    SizedBox(width: 12),
+                    Icon(Icons.login_outlined),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 18),
                 Row(
                   children: [
-                    Icon(Icons.warning_amber_outlined),
+                    Icon(Icons.arrow_back_ios_outlined),
                     Spacer(),
                     Text(
                       'سياسة الاستخدام',
                       style: AppStyle.customText(context, 20, FontWeight.bold),
                     ),
+                    SizedBox(width: 12),
+                    Icon(Icons.policy_outlined),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 18),
                 Row(
                   children: [
-                    Icon(Icons.info_outline),
+                    Icon(Icons.arrow_back_ios_outlined),
                     Spacer(),
                     Text(
                       'حول التطبيق',
                       style: AppStyle.customText(context, 20, FontWeight.bold),
                     ),
+                    SizedBox(width: 12),
+                    Icon(Icons.info_outline),
                   ],
                 ),
-                SizedBox(height: 25),
+                SizedBox(height: 16),
                 DarkOrLightMode(),
               ],
             ),
