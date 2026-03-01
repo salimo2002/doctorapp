@@ -1,14 +1,14 @@
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/view/main_views.dart';
-import 'package:doctorapp/view/register_view.dart';
 import 'package:doctorapp/widgets/chat_text_field.dart';
 import 'package:doctorapp/widgets/custom_button.dart';
 import 'package:doctorapp/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
 
-class LogInView extends StatelessWidget {
-  const LogInView({super.key});
-  static String id = 'log_in_view';
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
+  static String id = 'register_view';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,15 +40,26 @@ class LogInView extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    'مرحبا بعودتك',
+                    'انشاء حساب جديد',
                     style: AppStyle.customText(context, 28, FontWeight.bold),
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'سجل دخولك للوصول الى ادويتك',
+                    'انشئ حسابك واستمتع بخدماتنا',
                     style: AppStyle.customText(context, 18, FontWeight.normal),
                   ),
                   SizedBox(height: 20),
+                  TextFieldLabel(label: 'الاسم الكامل'),
+                  SizedBox(height: 5),
+                  ChatTextField(
+                    message: TextEditingController(),
+                    hint: 'ادخل الاسم الكامل',
+                    suffixIcon: Icon(
+                      Icons.person_outline,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  SizedBox(height: 15),
                   TextFieldLabel(label: 'البريد الالكتروني'),
                   SizedBox(height: 5),
                   ChatTextField(
@@ -70,28 +81,20 @@ class LogInView extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
+                  SizedBox(height: 15),
+                  TextFieldLabel(label: 'تأكيد كلمة المرور'),
                   SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Text(
-                          'نسيت كلمة المرور؟',
-                          style: AppStyle.containerText(
-                            context,
-                            18,
-                            FontWeight.bold,
-                            Theme.of(context).colorScheme.primary,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 5),
-                    ],
+                  ChatTextField(
+                    message: TextEditingController(),
+                    hint: 'أعد ادخال كلمة المرور',
+                    suffixIcon: Icon(
+                      Icons.lock_outlined,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                   SizedBox(height: 20),
                   CustomButton(
-                    label: 'تسجيل الدخول',
+                    label: 'انشاء حساب',
                     onPressed: () {
                       Navigator.pushNamed(context, MainViews.id);
                     },
@@ -102,10 +105,10 @@ class LogInView extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, RegisterView.id);
+                          Navigator.pop(context);
                         },
                         child: Text(
-                          'سجل الان',
+                          'تسجيل الدخول',
                           style: AppStyle.containerText(
                             context,
                             18,
@@ -116,7 +119,7 @@ class LogInView extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        'ليس لديك حساب؟',
+                        'لديك حساب؟',
                         style: AppStyle.customText(
                           context,
                           18,

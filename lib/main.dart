@@ -1,6 +1,7 @@
 import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/log_in_view.dart';
 import 'package:doctorapp/view/main_views.dart';
+import 'package:doctorapp/view/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,8 @@ class DoctorApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         MainViews.id: (context) => MainViews(),
-        LogInView.id:(context)=> LogInView()
+        LogInView.id:(context)=> LogInView(),
+        RegisterView.id:(context)=> RegisterView(),
         },
       initialRoute: LogInView.id,
     );

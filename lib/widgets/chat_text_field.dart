@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bidi_text/bidi_text_field.dart';
 
 class ChatTextField extends StatelessWidget {
-  const ChatTextField({super.key, required this.message, required this.hint, this.suffixIcon});
+  const ChatTextField({
+    super.key,
+    required this.message,
+    required this.hint,
+    this.suffixIcon,
+  });
 
   final TextEditingController message;
   final String hint;
