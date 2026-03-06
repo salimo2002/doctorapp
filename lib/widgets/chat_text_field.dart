@@ -7,12 +7,13 @@ class ChatTextField extends StatelessWidget {
     super.key,
     required this.message,
     required this.hint,
-    this.suffixIcon,
+    this.suffixIcon, required this.focusNode,
   });
 
   final TextEditingController message;
   final String hint;
   final Widget? suffixIcon;
+  final FocusNode focusNode;
   @override
   Widget build(BuildContext context) {
     return BidiTextField(

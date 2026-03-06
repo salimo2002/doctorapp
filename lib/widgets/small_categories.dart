@@ -31,7 +31,7 @@ class _SmallCategoriesState extends State<SmallCategories> {
         ),
         CategoryContainer(
           icon: Icons.flag,
-          label: 'الادوية الاكثر مبيعا',
+          label: 'ادوية جديدة',
           isSelected: card2,
           onTap: () {
             setState(() {
@@ -43,7 +43,7 @@ class _SmallCategoriesState extends State<SmallCategories> {
         ),
         CategoryContainer(
           icon: Icons.new_label_sharp,
-          label: 'ادوية جديدة',
+          label: 'ادوية مفقودة',
           isSelected: card3,
           onTap: () {
             setState(() {

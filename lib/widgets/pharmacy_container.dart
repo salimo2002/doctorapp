@@ -26,19 +26,13 @@ class PharmacyContainer extends StatelessWidget {
     return CustomContainer(
       cheldreen: [
         PharmacyLabel(
-          pharmacyLabel: 'صيدلية اليرموك',
+          pharmacyLabel: pharmacyLabel,
           pharmacyLocation: () {},
           isOpen: isOpen,
         ),
-        PharmacyDetails(
-          iconData: Icons.location_on,
-          title: 'شارع الحضارة - مقابل مجمع اليرموك',
-        ),
-        PharmacyDetails(
-          iconData: Icons.timer,
-          title: 'من الساعة 8:00 صباحا حتى 10:00 مساء',
-        ),
-        PharmacyDetails(iconData: Icons.phone_android, title: '0988818024'),
+        PharmacyDetails(iconData: Icons.location_on, title: location),
+        PharmacyDetails(iconData: Icons.timer, title: workingHours),
+        PharmacyDetails(iconData: Icons.phone_android, title: phoneNumber),
       ],
     );
   }

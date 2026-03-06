@@ -22,15 +22,11 @@ class RegisterView extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * .05),
-                  Icon(
-                    Icons.piano,
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 100,
-                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * .02),
+                  Image.asset('assets/images/211.png', width: 150),
                   SizedBox(height: 10),
                   Text(
-                    'الصيدلية الذكية',
+                    'المستشار الذكي',
                     style: AppStyle.containerText(
                       context,
                       28,
@@ -38,20 +34,22 @@ class RegisterView extends StatelessWidget {
                       Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text(
                     'انشاء حساب جديد',
                     style: AppStyle.customText(context, 28, FontWeight.bold),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 5),
                   Text(
                     'انشئ حسابك واستمتع بخدماتنا',
                     style: AppStyle.customText(context, 18, FontWeight.normal),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   TextFieldLabel(label: 'الاسم الكامل'),
                   SizedBox(height: 5),
                   ChatTextField(
+                    focusNode: FocusNode(),
+
                     message: TextEditingController(),
                     hint: 'ادخل الاسم الكامل',
                     suffixIcon: Icon(
@@ -59,10 +57,11 @@ class RegisterView extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 10),
                   TextFieldLabel(label: 'البريد الالكتروني'),
                   SizedBox(height: 5),
                   ChatTextField(
+                    focusNode: FocusNode(),
                     message: TextEditingController(),
                     hint: 'ادخل البريد الالكتروني',
                     suffixIcon: Icon(
@@ -70,10 +69,12 @@ class RegisterView extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 10),
                   TextFieldLabel(label: 'كلمة المرور'),
                   SizedBox(height: 5),
                   ChatTextField(
+                    focusNode: FocusNode(),
+
                     message: TextEditingController(),
                     hint: 'ادخل كلمة المرور',
                     suffixIcon: Icon(
@@ -81,10 +82,11 @@ class RegisterView extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 10),
                   TextFieldLabel(label: 'تأكيد كلمة المرور'),
                   SizedBox(height: 5),
                   ChatTextField(
+                    focusNode: FocusNode(),
                     message: TextEditingController(),
                     hint: 'أعد ادخال كلمة المرور',
                     suffixIcon: Icon(
