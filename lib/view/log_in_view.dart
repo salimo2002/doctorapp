@@ -22,7 +22,7 @@ class LogInView extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * .02),
+                  SizedBox(height: MediaQuery.of(context).size.height * .03),
                   Image.asset('assets/images/211.png', width: 150),
                   SizedBox(height: 10),
                   Text(
@@ -48,7 +48,6 @@ class LogInView extends StatelessWidget {
                   TextFieldLabel(label: 'البريد الالكتروني'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    focusNode: FocusNode(),
                     message: TextEditingController(),
                     hint: 'ادخل البريد الالكتروني',
                     suffixIcon: Icon(
@@ -60,7 +59,6 @@ class LogInView extends StatelessWidget {
                   TextFieldLabel(label: 'كلمة المرور'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    focusNode: FocusNode(),
                     message: TextEditingController(),
                     hint: 'ادخل كلمة المرور',
                     suffixIcon: Icon(

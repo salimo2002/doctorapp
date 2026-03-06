@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
                 ontap: () {},
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,

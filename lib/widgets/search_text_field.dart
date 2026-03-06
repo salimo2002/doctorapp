@@ -1,5 +1,6 @@
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bidi_text/bidi_text_field.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
@@ -15,13 +16,13 @@ class SearchTextField extends StatelessWidget {
   final Function() ontap;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return BidiTextField(
       controller: controller,
       focusNode: focusNode,
       onTap: ontap,
       textDirection: TextDirection.rtl,
       decoration: InputDecoration(
-        prefixIcon: Icon(
+        suffixIcon: Icon(
           Icons.search,
           color: Theme.of(context).colorScheme.primary,
         ),

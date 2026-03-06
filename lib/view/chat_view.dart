@@ -64,7 +64,6 @@ class _ChatViewState extends State<ChatView> {
                   child: SizedBox(
                     height: 45,
                     child: ChatTextField(
-                      focusNode: FocusNode(),
                       hint: 'اكتب سؤالك هنا',
                       message: message,
                     ),

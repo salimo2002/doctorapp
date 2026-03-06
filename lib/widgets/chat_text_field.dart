@@ -7,13 +7,12 @@ class ChatTextField extends StatelessWidget {
     super.key,
     required this.message,
     required this.hint,
-    this.suffixIcon, required this.focusNode,
+    this.suffixIcon,
   });
 
   final TextEditingController message;
   final String hint;
   final Widget? suffixIcon;
-  final FocusNode focusNode;
   @override
   Widget build(BuildContext context) {
     return BidiTextField(
@@ -31,6 +30,10 @@ class ChatTextField extends StatelessWidget {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
         ),
       ),
     );
