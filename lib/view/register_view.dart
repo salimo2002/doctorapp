@@ -5,10 +5,23 @@ import 'package:doctorapp/widgets/custom_button.dart';
 import 'package:doctorapp/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
   static String id = 'register_view';
 
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  FocusNode nameFocus = FocusNode();
+  FocusNode emailFocus = FocusNode();
+  FocusNode passwordFocus = FocusNode();
+  FocusNode confirmPasswordFocus = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +61,8 @@ class RegisterView extends StatelessWidget {
                   TextFieldLabel(label: 'الاسم الكامل'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    message: TextEditingController(),
+                    controller: nameController,
+                    focusNode: nameFocus,
                     hint: 'ادخل الاسم الكامل',
                     suffixIcon: Icon(
                       Icons.person_outline,
@@ -59,7 +73,8 @@ class RegisterView extends StatelessWidget {
                   TextFieldLabel(label: 'البريد الالكتروني'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    message: TextEditingController(),
+                    controller: emailController,
+                    focusNode: emailFocus,
                     hint: 'ادخل البريد الالكتروني',
                     suffixIcon: Icon(
                       Icons.email_outlined,
@@ -70,7 +85,8 @@ class RegisterView extends StatelessWidget {
                   TextFieldLabel(label: 'كلمة المرور'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    message: TextEditingController(),
+                    controller: passwordController,
+                    focusNode: passwordFocus,
                     hint: 'ادخل كلمة المرور',
                     suffixIcon: Icon(
                       Icons.lock_outlined,
@@ -81,7 +97,8 @@ class RegisterView extends StatelessWidget {
                   TextFieldLabel(label: 'تأكيد كلمة المرور'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    message: TextEditingController(),
+                    controller: confirmPasswordController,
+                    focusNode: confirmPasswordFocus,
                     hint: 'أعد ادخال كلمة المرور',
                     suffixIcon: Icon(
                       Icons.lock_outlined,

@@ -27,19 +27,16 @@ class _ProfileViewState extends State<ProfileView> {
                 style: AppStyle.customText(context, 28, FontWeight.bold),
               ),
             ),
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
+            SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
             Expanded(
               child: ListView(
                 children: [
                   Column(
                     children: [
-                      Image.asset(
-                        'assets/images/user.png',
-                        height: 150,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                      Image.asset('assets/images/211.png', width: 150),
+                      SizedBox(height: 5),
                       Text(
-                        'اسم المستخدم',
+                        'سليم محمد عويجان',
                         style: AppStyle.customText(
                           context,
                           26,

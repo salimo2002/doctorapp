@@ -13,6 +13,8 @@ class ChatView extends StatefulWidget {
 
 class _ChatViewState extends State<ChatView> {
   TextEditingController message = TextEditingController();
+  FocusNode messageFocus = FocusNode();
+  @override
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,8 +66,9 @@ class _ChatViewState extends State<ChatView> {
                   child: SizedBox(
                     height: 45,
                     child: ChatTextField(
+                      focusNode: messageFocus,
                       hint: 'اكتب سؤالك هنا',
-                      message: message,
+                      controller: message,
                     ),
                   ),
                 ),

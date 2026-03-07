@@ -5,18 +5,21 @@ import 'package:flutter_bidi_text/bidi_text_field.dart';
 class ChatTextField extends StatelessWidget {
   const ChatTextField({
     super.key,
-    required this.message,
+    required this.controller,
     required this.hint,
     this.suffixIcon,
+    required this.focusNode,
   });
 
-  final TextEditingController message;
+  final TextEditingController controller;
   final String hint;
   final Widget? suffixIcon;
+  final FocusNode focusNode;
   @override
   Widget build(BuildContext context) {
     return BidiTextField(
-      controller: message,
+      controller: controller,
+      focusNode: focusNode,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         fillColor: Colors.white30,

@@ -6,9 +6,19 @@ import 'package:doctorapp/widgets/custom_button.dart';
 import 'package:doctorapp/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
 
-class LogInView extends StatelessWidget {
+class LogInView extends StatefulWidget {
   const LogInView({super.key});
   static String id = 'log_in_view';
+
+  @override
+  State<LogInView> createState() => _LogInViewState();
+}
+
+class _LogInViewState extends State<LogInView> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  FocusNode emailFocus = FocusNode();
+  FocusNode passwordFocus = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +58,8 @@ class LogInView extends StatelessWidget {
                   TextFieldLabel(label: 'البريد الالكتروني'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    message: TextEditingController(),
+                    controller: emailController,
+                    focusNode: emailFocus,
                     hint: 'ادخل البريد الالكتروني',
                     suffixIcon: Icon(
                       Icons.email_outlined,
@@ -59,7 +70,8 @@ class LogInView extends StatelessWidget {
                   TextFieldLabel(label: 'كلمة المرور'),
                   SizedBox(height: 5),
                   ChatTextField(
-                    message: TextEditingController(),
+                    controller: passwordController,
+                    focusNode: passwordFocus,
                     hint: 'ادخل كلمة المرور',
                     suffixIcon: Icon(
                       Icons.lock_outlined,
