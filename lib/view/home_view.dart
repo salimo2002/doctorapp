@@ -49,7 +49,7 @@ class HomeView extends StatelessWidget {
                         '⚫️ لايجب استخدام الايبو بروفين على معدة فارغة',
                         style: AppStyle.customText(
                           context,
-                          AppStyle.contentText,
+                          AppStyle.body,
                           FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
@@ -59,7 +59,7 @@ class HomeView extends StatelessWidget {
                         '⚫️ الانتباه لعدم تناول جرغات كبيرة من الايبو بروفين',
                         style: AppStyle.customText(
                           context,
-                          AppStyle.contentText,
+                          AppStyle.body,
                           FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
@@ -75,9 +75,10 @@ class HomeView extends StatelessWidget {
                       SizedBox(height: 5),
                       Text(
                         'باراسيتامول  ',
+                        textDirection: TextDirection.rtl,
                         style: AppStyle.customText(
                           context,
-                          20,
+                          AppStyle.title1,
                           FontWeight.bold,
                         ),
                       ),
@@ -86,7 +87,7 @@ class HomeView extends StatelessWidget {
                         '⚫️ مسكن وخافض للحرارة',
                         style: AppStyle.customText(
                           context,
-                          AppStyle.contentText,
+                          AppStyle.body,
                           FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
@@ -96,7 +97,7 @@ class HomeView extends StatelessWidget {
                         '⚫️ لاينصح بتناول اكثر من 4 جرعات يوميا',
                         style: AppStyle.customText(
                           context,
-                          AppStyle.contentText,
+                          AppStyle.body,
                           FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,
@@ -106,7 +107,7 @@ class HomeView extends StatelessWidget {
                         '⚫️ الجرعة الزائدة تؤذي الكبد',
                         style: AppStyle.customText(
                           context,
-                          AppStyle.contentText,
+                          AppStyle.body,
                           FontWeight.w700,
                         ),
                         textDirection: TextDirection.rtl,

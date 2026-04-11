@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +8,7 @@ class MedicineContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ValueNotifier<bool> isFavorite = ValueNotifier(false);
     return Container(
       width: double.infinity,
       margin: EdgeInsets.only(top: 10),
@@ -20,57 +23,62 @@ class MedicineContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.favorite_border_outlined),
+              ValueListenableBuilder<bool>(
+                valueListenable: isFavorite,
+                builder: (context, value, child) {
+                  return InkWell(
+                    onTap: () {
+                      isFavorite.value = !isFavorite.value;
+                    },
+                    child: value
+                        ? Icon(Icons.favorite, color: Colors.red)
+                        : Icon(Icons.favorite_border_outlined),
+                  );
+                },
+              ),
               Spacer(),
               Text(
                 'Paracetamol - باراسيتامول',
                 style: AppStyle.containerText(
                   context,
-                  18,
+                  AppStyle.title1,
                   FontWeight.bold,
                   Colors.blue.shade500,
                 ),
               ),
             ],
           ),
-          Text(
-            'شركة ابن الهيثم',
-            style: AppStyle.customText(
-              context,
-              AppStyle.contentText,
-              FontWeight.w700,
-            ),
-          ),
-          Text(
-            'يعالج صداع الرأس والحمى',
-            style: AppStyle.customText(
-              context,
-              AppStyle.contentText,
-              FontWeight.w700,
-            ),
-          ),
-          Text(
-            'يستخدم في حالات الالم البسيطة الى المتوسطة',
-            style: AppStyle.customText(
-              context,
-              AppStyle.contentText,
-              FontWeight.w700,
+          SizedBox(height: 4),
+          Padding(
+            padding: const EdgeInsets.only(left: 1.20),
+            child: Text(
+              'يعالج صداع الرأس والحمى ,ويساعد في تخفيف آلام العضلات والمفاصل, والآلام الناتجة عن نزلات البرد والإنفلونزا',
+              textDirection: TextDirection.rtl,
+              softWrap: true,
+              maxLines: 3,
+              style: AppStyle.customText(
+                context,
+                AppStyle.body,
+                FontWeight.w700,
+              ),
             ),
           ),
           Text(
             'الجرعات العالية قد تسبب تضرر الكبد',
+            textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
-              AppStyle.contentText,
+              AppStyle.body,
               FontWeight.w800,
               Colors.red,
             ),
           ),
           Text(
             'لا يحتاج الباراسيتامول إلى وصفة طبية',
+            textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
-              AppStyle.contentText,
+              AppStyle.body,
               FontWeight.w800,
               Colors.green,
             ),

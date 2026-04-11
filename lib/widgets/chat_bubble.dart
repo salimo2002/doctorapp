@@ -32,7 +32,7 @@ class ChatBubble extends StatelessWidget {
               softWrap: true,
               style: AppStyle.containerText(
                 context,
-                18,
+                AppStyle.title1,
                 FontWeight.normal,
                 sendByMe
                     ? Theme.of(context).colorScheme.onPrimary

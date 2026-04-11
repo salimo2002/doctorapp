@@ -15,7 +15,6 @@ class _ChatViewState extends State<ChatView> {
   TextEditingController message = TextEditingController();
   FocusNode messageFocus = FocusNode();
   @override
-  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
@@ -34,7 +33,11 @@ class _ChatViewState extends State<ChatView> {
                 Spacer(),
                 Text(
                   'المساعد الذكي',
-                  style: AppStyle.customText(context, 28, FontWeight.bold),
+                  style: AppStyle.customText(
+                    context,
+                    AppStyle.h1,
+                    FontWeight.bold,
+                  ),
                 ),
               ],
             ),

@@ -42,20 +42,28 @@ class _RegisterViewState extends State<RegisterView> {
                     'المستشار الذكي',
                     style: AppStyle.containerText(
                       context,
-                      28,
+                      AppStyle.h2,
                       FontWeight.bold,
                       Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 5),
                   Text(
                     'انشاء حساب جديد',
-                    style: AppStyle.customText(context, 28, FontWeight.bold),
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.h3,
+                      FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 5),
                   Text(
                     'انشئ حسابك واستمتع بخدماتنا',
-                    style: AppStyle.customText(context, 18, FontWeight.normal),
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.h3,
+                      FontWeight.normal,
+                    ),
                   ),
                   SizedBox(height: 10),
                   TextFieldLabel(label: 'الاسم الكامل'),

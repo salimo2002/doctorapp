@@ -1,4 +1,3 @@
-
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,10 @@ class TextFieldLabel extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(label, style: AppStyle.customText(context, 18, FontWeight.bold)),
+        Text(
+          label,
+          style: AppStyle.customText(context, AppStyle.title2, FontWeight.bold),
+        ),
         SizedBox(width: 5),
       ],
     );

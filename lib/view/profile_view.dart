@@ -24,7 +24,11 @@ class _ProfileViewState extends State<ProfileView> {
             Center(
               child: Text(
                 'حسابي',
-                style: AppStyle.customText(context, 28, FontWeight.bold),
+                style: AppStyle.customText(
+                  context,
+                  AppStyle.h1,
+                  FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
@@ -39,7 +43,7 @@ class _ProfileViewState extends State<ProfileView> {
                         'سليم محمد عويجان',
                         style: AppStyle.customText(
                           context,
-                          26,
+                          AppStyle.h2,
                           FontWeight.bold,
                         ),
                       ),
@@ -47,7 +51,7 @@ class _ProfileViewState extends State<ProfileView> {
                         'salimosalim31@gmail.com',
                         style: AppStyle.customText(
                           context,
-                          18,
+                          AppStyle.title2,
                           FontWeight.bold,
                         ),
                       ),

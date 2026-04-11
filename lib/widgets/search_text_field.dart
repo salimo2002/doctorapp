@@ -29,7 +29,11 @@ class SearchTextField extends StatelessWidget {
         hint: Text(
           hint,
           textDirection: TextDirection.rtl,
-          style: AppStyle.customText(context, 18, FontWeight.normal),
+          style: AppStyle.customText(
+            context,
+            AppStyle.title2,
+            FontWeight.normal,
+          ),
         ),
         contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         fillColor: Colors.white30,

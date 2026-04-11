@@ -1,11 +1,8 @@
-
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
 class NoFavoriteMedicines extends StatelessWidget {
-  const NoFavoriteMedicines({
-    super.key,
-  });
+  const NoFavoriteMedicines({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +18,16 @@ class NoFavoriteMedicines extends StatelessWidget {
           SizedBox(height: 10),
           Text(
             'لا توجد أدوية مفضلة حتى الآن',
-            style: AppStyle.customText(context, 20, FontWeight.bold),
+            style: AppStyle.customText(context, AppStyle.h3, FontWeight.bold),
           ),
           SizedBox(height: 10),
           Text(
             'ابدأ باضافة الأدوية التي تود حفظها في المفضلة',
-            style: AppStyle.customText(context, 20, FontWeight.normal),
+            style: AppStyle.customText(
+              context,
+              AppStyle.title2,
+              FontWeight.normal,
+            ),
           ),
         ],
       ),

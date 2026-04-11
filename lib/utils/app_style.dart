@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 
 class AppStyle {
-  static const double contentText = 17;
+  static const double h1 = 28;
+  static const double h2 = 24;
+  static const double h3 = 20;
+  static const double title1 = 18;
+  static const double title2 = 16;
+  static const double body = 15;
+  static const double bodySmall = 13;
+  static const double caption = 12;
   static TextStyle customText(
     BuildContext context,
     double size,
     FontWeight fontWeight,
   ) {
     return TextStyle(
-      fontSize: MediaQuery.of(context).textScaler.scale(size),
+      fontSize: responsiveFont(context, size),
       fontWeight: fontWeight,
       color: Theme.of(context).colorScheme.tertiary,
     );
@@ -21,10 +28,22 @@ class AppStyle {
     Color color,
   ) {
     return TextStyle(
-      fontSize: MediaQuery.of(context).textScaler.scale(size),
+      fontSize: responsiveFont(context, size),
       fontWeight: fontWeight,
       color: color,
     );
+  }
+
+  static double responsiveFont(BuildContext context, double size) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double scale = screenWidth / 375;
+
+    double responsiveSize = size * scale;
+
+    if (responsiveSize < size * 0.8) return size * 0.8;
+    if (responsiveSize > size * 1.2) return size * 1.2;
+
+    return responsiveSize;
   }
 
   static BoxDecoration decoratedBackground(BuildContext context) {

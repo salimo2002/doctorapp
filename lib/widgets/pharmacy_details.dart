@@ -12,16 +12,17 @@ class PharmacyDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         spacing: 5,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
             title,
+            textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
-              16,
+              AppStyle.title2,
               FontWeight.normal,
               Theme.of(context).colorScheme.tertiary,
             ),

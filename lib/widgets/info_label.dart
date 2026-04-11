@@ -11,7 +11,10 @@ class InfoLabel extends StatelessWidget {
       spacing: 10,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(label, style: AppStyle.customText(context, 20, FontWeight.bold)),
+        Text(
+          label,
+          style: AppStyle.customText(context, AppStyle.title1, FontWeight.bold),
+        ),
         Icon(icon, color: Colors.amber),
       ],
     );

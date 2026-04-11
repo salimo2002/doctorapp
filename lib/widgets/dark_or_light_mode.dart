@@ -4,36 +4,32 @@ import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DarkOrLightMode extends StatefulWidget {
+class DarkOrLightMode extends StatelessWidget {
   const DarkOrLightMode({super.key});
 
   @override
-  State<DarkOrLightMode> createState() => _DarkOrLightModeState();
-}
-
-class _DarkOrLightModeState extends State<DarkOrLightMode> {
-  late bool isDarkMode;
-  @override
   Widget build(BuildContext context) {
-    isDarkMode = Provider.of<ThemeProvider>(context).currentTheme == darkMode;
     return InkWell(
       onTap: () {
-        setState(() {
-          isDarkMode = !isDarkMode;
-          Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-        });
+        Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
       },
       child: Row(
         children: [
           Icon(Icons.arrow_back_ios_outlined),
           Spacer(),
           Text(
-            isDarkMode ? 'الوضع الداكن' : 'الوضع الفاتح',
-            style: AppStyle.customText(context, 20, FontWeight.bold),
+            Provider.of<ThemeProvider>(context).currentThemeName == 'dark'
+                ? 'الوضع االداكن'
+                : 'الوضع الفاتح',
+            style: AppStyle.customText(
+              context,
+              AppStyle.title1,
+              FontWeight.bold,
+            ),
           ),
           SizedBox(width: 12),
           Icon(
-            isDarkMode ? Icons.dark_mode : Icons.light_mode,
+            Provider.of<ThemeProvider>(context).currentIcon,
             color: Colors.amber,
           ),
         ],

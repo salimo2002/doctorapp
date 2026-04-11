@@ -17,7 +17,11 @@ class PharmaciesView extends StatelessWidget {
             Center(
               child: Text(
                 'الصيدليات',
-                style: AppStyle.customText(context, 28, FontWeight.bold),
+                style: AppStyle.customText(
+                  context,
+                  AppStyle.h1,
+                  FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(height: 10),

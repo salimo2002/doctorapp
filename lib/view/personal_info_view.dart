@@ -14,7 +14,7 @@ class PersonalInfoView extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(child: Text('Personal Info View')),
+      body: Container(decoration: AppStyle.decoratedBackground(context)),
     );
   }
 }

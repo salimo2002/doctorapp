@@ -32,27 +32,35 @@ class _LogInViewState extends State<LogInView> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * .03),
+                  SizedBox(height: MediaQuery.of(context).size.height * .08),
                   Image.asset('assets/images/211.png', width: 150),
                   SizedBox(height: 10),
                   Text(
                     'المستشار الذكي',
                     style: AppStyle.containerText(
                       context,
-                      28,
+                      AppStyle.h2,
                       FontWeight.bold,
                       Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 5),
                   Text(
                     'مرحبا بعودتك',
-                    style: AppStyle.customText(context, 28, FontWeight.bold),
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.h3,
+                      FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 5),
                   Text(
                     'سجل دخولك للوصول الى ادويتك',
-                    style: AppStyle.customText(context, 18, FontWeight.normal),
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.h3,
+                      FontWeight.normal,
+                    ),
                   ),
                   SizedBox(height: 10),
                   TextFieldLabel(label: 'البريد الالكتروني'),

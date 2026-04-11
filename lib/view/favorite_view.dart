@@ -16,7 +16,11 @@ class FavoriteView extends StatelessWidget {
             Center(
               child: Text(
                 'المفضلة',
-                style: AppStyle.customText(context, 28, FontWeight.bold),
+                style: AppStyle.customText(
+                  context,
+                  AppStyle.h1,
+                  FontWeight.bold,
+                ),
               ),
             ),
             Expanded(

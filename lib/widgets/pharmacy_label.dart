@@ -1,4 +1,3 @@
-
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/open_or_close_pharmasy.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,8 @@ class PharmacyLabel extends StatelessWidget {
   const PharmacyLabel({
     super.key,
     required this.pharmacyLabel,
-    required this.pharmacyLocation, required this.isOpen,
+    required this.pharmacyLocation,
+    required this.isOpen,
   });
   final String pharmacyLabel;
   final VoidCallback pharmacyLocation;
@@ -28,7 +28,7 @@ class PharmacyLabel extends StatelessWidget {
         OpenOrClosePharmasy(isOpen: isOpen),
         Text(
           pharmacyLabel,
-          style: AppStyle.customText(context, 20, FontWeight.bold),
+          style: AppStyle.customText(context, AppStyle.h3, FontWeight.bold),
         ),
       ],
     );
