@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
