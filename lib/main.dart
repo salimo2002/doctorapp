@@ -35,10 +35,10 @@ class DoctorApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         MainViews.id: (context) => MainViews(),
-        LogInView.id:(context)=> LogInView(),
-        RegisterView.id:(context)=> RegisterView(),
+        LogInView.id: (context) => LogInView(),
+        RegisterView.id: (context) => RegisterView(),
         PersonalInfoView.id: (context) => PersonalInfoView(),
-        },
+      },
       initialRoute: LogInView.id,
     );
   }

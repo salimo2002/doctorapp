@@ -66,12 +66,6 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                           SizedBox(height: 18),
                           SettingAction(
-                            icon: Icons.login_outlined,
-                            title: 'معلومات تسجيل الدخول',
-                            ontap: () {},
-                          ),
-                          SizedBox(height: 18),
-                          SettingAction(
                             icon: Icons.policy_outlined,
                             title: 'سياسة الاستخدام',
                             ontap: () {},
