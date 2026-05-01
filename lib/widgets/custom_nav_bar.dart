@@ -23,10 +23,7 @@ class CustomNavBar extends StatelessWidget {
       currentIndex: currentIndex,
       onTap: onTap,
       items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_2_outlined),
-          label: 'حسابي',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite_border),
           label: 'المفضلة',

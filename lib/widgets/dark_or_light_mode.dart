@@ -1,4 +1,3 @@
-import 'package:doctorapp/theme/theme.dart';
 import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +18,8 @@ class DarkOrLightMode extends StatelessWidget {
           Spacer(),
           Text(
             Provider.of<ThemeProvider>(context).currentThemeName == 'dark'
-                ? 'الوضع االداكن'
-                : 'الوضع الفاتح',
+                ? 'الوضع الفاتح'
+                : 'الوضع الداكن',
             style: AppStyle.customText(
               context,
               AppStyle.title1,
