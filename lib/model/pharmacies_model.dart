@@ -2,9 +2,11 @@ class PharmaciesModel {
   final int id;
   final String name;
   final String address;
-  final DateTime openingTime;
-  final DateTime closingTime;
+  final String openingTime;
+  final String closingTime;
   final String phoneNumber;
+  final double latitude;
+  final double longitude;
 
   PharmaciesModel({
     required this.id,
@@ -13,6 +15,8 @@ class PharmaciesModel {
     required this.openingTime,
     required this.closingTime,
     required this.phoneNumber,
+    required this.latitude,
+    required this.longitude,
   });
   factory PharmaciesModel.fromJson(json) {
     return PharmaciesModel(
@@ -22,6 +26,8 @@ class PharmaciesModel {
       openingTime: json['opening_time'],
       closingTime: json['closing_time'],
       phoneNumber: json['phone_number'],
+      latitude: json['latitude'],
+      longitude: json['longitude'],
     );
   }
   Map<String, dynamic> toMap() {
@@ -31,6 +37,8 @@ class PharmaciesModel {
       'opening_time': openingTime,
       'closing_time': closingTime,
       'phone_number': phoneNumber,
+      'latitude': latitude,
+      'longitude': longitude,
     };
   }
 }

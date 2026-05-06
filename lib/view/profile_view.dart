@@ -1,5 +1,3 @@
-import 'package:doctorapp/services/daily_info_service.dart';
-import 'package:doctorapp/services/drug_services.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
