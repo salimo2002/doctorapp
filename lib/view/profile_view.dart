@@ -1,4 +1,5 @@
 import 'package:doctorapp/services/daily_info_service.dart';
+import 'package:doctorapp/services/drug_services.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
@@ -76,7 +77,8 @@ class _ProfileViewState extends State<ProfileView> {
                           SettingAction(
                             icon: Icons.info_outline,
                             title: 'حول التطبيق',
-                            ontap: () {},
+                            ontap: () {
+                            },
                           ),
                           SizedBox(height: 16),
                           DarkOrLightMode(),
