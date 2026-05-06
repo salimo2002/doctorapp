@@ -1,6 +1,6 @@
 class DailyInformationModel {
   final int id;
-  final DateTime dailyDate;
+  final String dailyDate;
   final String drugName;
   final String medicalInfo1;
   final String medicalInfo2;

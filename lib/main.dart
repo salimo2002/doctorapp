@@ -6,9 +6,15 @@ import 'package:doctorapp/view/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main(List<String> args) {
-  WidgetsFlutterBinding.ensureInitialized();
+void main(List<String> args) async {
+    WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: 'https://oiawqwnohtlommzjulvj.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pYXdxd25vaHRsb21temp1bHZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg4NjExNzAsImV4cCI6MjA4NDQzNzE3MH0.Cd1G2QXzUSNYi1k9BU2eSoHKk3to1NJI-pzsBfawpXQ',
+  );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.black,
