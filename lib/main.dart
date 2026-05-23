@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main(List<String> args) async {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
     url: 'https://oiawqwnohtlommzjulvj.supabase.co',
     anonKey:
