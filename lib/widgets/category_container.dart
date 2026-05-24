@@ -18,6 +18,7 @@ class CategoryContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: 150,
         margin: EdgeInsets.symmetric(horizontal: 5),
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
@@ -27,6 +28,7 @@ class CategoryContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           spacing: 10,
           children: [
             Icon(

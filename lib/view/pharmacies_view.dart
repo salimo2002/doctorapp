@@ -1,6 +1,7 @@
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/search_text_field.dart';
 import 'package:doctorapp/widgets/pharmacy_container.dart';
+import 'package:doctorapp/widgets/small_categories.dart';
 import 'package:flutter/material.dart';
 
 class PharmaciesView extends StatelessWidget {
@@ -34,20 +35,23 @@ class PharmaciesView extends StatelessWidget {
                 ontap: () {},
               ),
             ),
+            SizedBox(height: 15),
+            SizedBox(
+              height: 40,
+              child: SmallCategories(
+                label1: 'الصيدليات',
+                label2: 'الصيدليات المناوبة',
+                icon1: Icons.local_pharmacy,
+                icon2: Icons.schedule,
+              ),
+            ),
+            SizedBox(height: 5),
             Expanded(
-              child: ListView(
-                padding: EdgeInsets.only(top: 5),
-                children: [
-                  PharmacyContainer(
-                    pharmacyLabel: 'صيدلية اليرموك',
-                    isOpen: true,
-                    pharmacyLocation: () {},
-                    location: 'شارع الحضارة - مقابل مجمع اليرموك',
-                    address: 'الرياض',
-                    workingHours: 'من الساعة 8:00 صباحا حتى 10:00 مساء',
-                    phoneNumber: '0988818024',
-                  ),
-                  PharmacyContainer(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return PharmacyContainer(
                     pharmacyLabel: 'صيدلية اليرموك',
                     isOpen: false,
                     pharmacyLocation: () {},
@@ -55,8 +59,8 @@ class PharmaciesView extends StatelessWidget {
                     address: 'الرياض',
                     workingHours: 'من الساعة 8:00 صباحا حتى 10:00 مساء',
                     phoneNumber: '0988818024',
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ],

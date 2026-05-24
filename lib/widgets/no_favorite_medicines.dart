@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class NoFavoriteMedicines extends StatelessWidget {
   const NoFavoriteMedicines({super.key});
-
+///TODO Remove
   @override
   Widget build(BuildContext context) {
     return Padding(

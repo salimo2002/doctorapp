@@ -27,7 +27,12 @@ class ChatTextField extends StatelessWidget {
         hint: Text(
           hint,
           textDirection: TextDirection.rtl,
-          style: AppStyle.customText(context, AppStyle.body, FontWeight.normal),
+          style: AppStyle.containerText(
+            context,
+            AppStyle.body,
+            FontWeight.normal,
+            Colors.grey,
+          ),
         ),
         contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),

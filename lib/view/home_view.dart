@@ -115,7 +115,15 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10),
-                  SizedBox(height: 40, child: SmallCategories()),
+                  SizedBox(
+                    height: 40,
+                    child: SmallCategories(
+                      label1: 'جميع الادوية',
+                      icon1: Icons.link,
+                      label2: 'الادوية المفقودة',
+                      icon2: Icons.remove_red_eye,
+                    ),
+                  ),
                   ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,

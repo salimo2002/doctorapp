@@ -32,10 +32,10 @@ class _ChatViewState extends State<ChatView> {
                 ),
                 Spacer(),
                 Text(
-                  'المساعد الذكي',
+                  'المساعد الطبي الذكي',
                   style: AppStyle.customText(
                     context,
-                    AppStyle.h1,
+                    AppStyle.h2,
                     FontWeight.bold,
                   ),
                 ),

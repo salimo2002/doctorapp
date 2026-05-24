@@ -31,7 +31,7 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
               ),
             ),
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+            SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
             Expanded(
               child: ListView(
                 children: [
@@ -55,6 +55,7 @@ class _ProfileViewState extends State<ProfileView> {
                           FontWeight.bold,
                         ),
                       ),
+                      SizedBox(height: 20),
                       CustomContainer(
                         cheldreen: [
                           SettingAction(
@@ -63,6 +64,12 @@ class _ProfileViewState extends State<ProfileView> {
                             ontap: () {
                               Navigator.pushNamed(context, PersonalInfoView.id);
                             },
+                          ),
+                          SizedBox(height: 18),
+                          SettingAction(
+                            icon: Icons.lock_outline,
+                            title: 'تغيير كلمة المرور',
+                            ontap: () {},
                           ),
                           SizedBox(height: 18),
                           SettingAction(
@@ -75,8 +82,7 @@ class _ProfileViewState extends State<ProfileView> {
                           SettingAction(
                             icon: Icons.info_outline,
                             title: 'حول التطبيق',
-                            ontap: () {
-                            },
+                            ontap: () {},
                           ),
                           SizedBox(height: 16),
                           DarkOrLightMode(),
