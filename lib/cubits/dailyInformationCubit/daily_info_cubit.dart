@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_state.dart';
 import 'package:doctorapp/services/daily_info_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
