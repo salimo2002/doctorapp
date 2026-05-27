@@ -1,3 +1,5 @@
+import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_cubit.dart';
+import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/info_label.dart';
@@ -5,9 +7,21 @@ import 'package:doctorapp/widgets/medicine_container.dart';
 import 'package:doctorapp/widgets/search_text_field.dart';
 import 'package:doctorapp/widgets/small_categories.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<DailyInfoCubit>(context).getDailyInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,81 +52,123 @@ class HomeView extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  CustomContainer(
-                    cheldreen: [
-                      InfoLabel(
-                        label: 'معلومة طبية',
-                        icon: Icons.notifications_sharp,
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        '⚫️ لايجب استخدام الايبو بروفين على معدة فارغة',
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.body,
-                          FontWeight.w700,
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        '⚫️ الانتباه لعدم تناول جرغات كبيرة من الايبو بروفين',
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.body,
-                          FontWeight.w700,
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                    ],
-                  ),
-                  CustomContainer(
-                    cheldreen: [
-                      InfoLabel(
-                        label: 'دواء اليوم',
-                        icon: Icons.medical_services_sharp,
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        'باراسيتامول  ',
-                        textDirection: TextDirection.rtl,
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.title1,
-                          FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        '⚫️ مسكن وخافض للحرارة',
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.body,
-                          FontWeight.w700,
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        '⚫️ لاينصح بتناول اكثر من 4 جرعات يوميا',
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.body,
-                          FontWeight.w700,
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        '⚫️ الجرعة الزائدة تؤذي الكبد',
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.body,
-                          FontWeight.w700,
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                    ],
+                  BlocBuilder<DailyInfoCubit, DailyInfoState>(
+                    builder: (context, state) {
+                      if (state is DailyInfoSuccess) {
+                        return Column(
+                          children: [
+                            CustomContainer(
+                              cheldreen: [
+                                InfoLabel(
+                                  label: 'معلومة طبية',
+                                  icon: Icons.notifications_sharp,
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  AppStyle.normalize(
+                                    '⚫️ ${state.dailyInfo.medicalInfo1}',
+                                  ),
+                                  style: AppStyle.customText(
+                                    context,
+                                    AppStyle.body,
+                                    FontWeight.w700,
+                                  ),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  AppStyle.normalize(
+                                    '⚫️ ${state.dailyInfo.medicalInfo2}',
+                                  ),
+                                  style: AppStyle.customText(
+                                    context,
+                                    AppStyle.body,
+                                    FontWeight.w700,
+                                  ),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ],
+                            ),
+                            CustomContainer(
+                              cheldreen: [
+                                InfoLabel(
+                                  label: 'دواء اليوم',
+                                  icon: Icons.medical_services_sharp,
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  state.dailyInfo.drugName,
+                                  textDirection: TextDirection.rtl,
+                                  style: AppStyle.customText(
+                                    context,
+                                    AppStyle.title1,
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  AppStyle.normalize(
+                                    '⚫️ ${state.dailyInfo.indication1}',
+                                  ),
+                                  style: AppStyle.customText(
+                                    context,
+                                    AppStyle.body,
+                                    FontWeight.w700,
+                                  ),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  AppStyle.normalize(
+                                    '⚫️ ${state.dailyInfo.indication2}',
+                                  ),
+                                  style: AppStyle.customText(
+                                    context,
+                                    AppStyle.body,
+                                    FontWeight.w700,
+                                  ),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  AppStyle.normalize(
+                                    '⚫️ ${state.dailyInfo.risks}',
+                                  ),
+                                  style: AppStyle.customText(
+                                    context,
+                                    AppStyle.body,
+                                    FontWeight.w700,
+                                  ),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      } else if (state is DailyInfoLoading) {
+                        return Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: CircularProgressIndicator(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        );
+                      } else if (state is DailyInfoError) {
+                        return Center(
+                          child: Text(
+                            'حدث خطأ في جلب المعلومات اليومية',
+                            style: AppStyle.customText(
+                              context,
+                              AppStyle.body,
+                              FontWeight.w700,
+                            ),
+                          ),
+                        );
+                      } else {
+                        return SizedBox.shrink();
+                      }
+                    },
                   ),
                   SizedBox(height: 10),
                   SizedBox(

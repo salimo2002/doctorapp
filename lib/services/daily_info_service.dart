@@ -13,9 +13,7 @@ class DailyInformationService {
         .select()
         .eq('daily_date', today)
         .maybeSingle();
-    log(today);
     final dailyInfo = DailyInformationModel.fromJson(response);
-    log(dailyInfo.drugName);
     return dailyInfo;
   }
 }

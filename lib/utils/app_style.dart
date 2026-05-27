@@ -59,4 +59,8 @@ class AppStyle {
       ),
     );
   }
+
+  static String normalize(String text) {
+    return text.split('\n').where((e) => e.trim().isNotEmpty).join(' ').trim();
+  }
 }

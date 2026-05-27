@@ -1,3 +1,4 @@
+import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_cubit.dart';
 import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/log_in_view.dart';
 import 'package:doctorapp/view/main_views.dart';
@@ -5,6 +6,7 @@ import 'package:doctorapp/view/personal_info_view.dart';
 import 'package:doctorapp/view/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -36,16 +38,21 @@ class DoctorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: Provider.of<ThemeProvider>(context).currentTheme,
-      debugShowCheckedModeBanner: false,
-      routes: {
-        MainViews.id: (context) => MainViews(),
-        LogInView.id: (context) => LogInView(),
-        RegisterView.id: (context) => RegisterView(),
-        PersonalInfoView.id: (context) => PersonalInfoView(),
-      },
-      initialRoute: LogInView.id,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<DailyInfoCubit>(create: (context) => DailyInfoCubit()),
+      ],
+      child: MaterialApp(
+        theme: Provider.of<ThemeProvider>(context).currentTheme,
+        debugShowCheckedModeBanner: false,
+        routes: {
+          MainViews.id: (context) => MainViews(),
+          LogInView.id: (context) => LogInView(),
+          RegisterView.id: (context) => RegisterView(),
+          PersonalInfoView.id: (context) => PersonalInfoView(),
+        },
+        initialRoute: LogInView.id,
+      ),
     );
   }
 }
