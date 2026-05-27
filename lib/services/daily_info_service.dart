@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:doctorapp/keys/supa_base_keys.dart';
 import 'package:doctorapp/model/daily_information_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
