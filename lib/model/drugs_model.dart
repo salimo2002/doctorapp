@@ -5,7 +5,6 @@ class DrugsModel {
   final String risks;
   final bool requiresPrescription;
   final bool isRare;
-  final bool isPreferred;
 
   DrugsModel({
     required this.id,
@@ -14,7 +13,6 @@ class DrugsModel {
     required this.risks,
     required this.requiresPrescription,
     required this.isRare,
-    required this.isPreferred,
   });
   factory DrugsModel.fromJson(json) {
     return DrugsModel(
@@ -24,7 +22,6 @@ class DrugsModel {
       risks: json['risks'],
       requiresPrescription: json['requires_prescription'],
       isRare: json['is_rare'],
-      isPreferred: json['is_preferred'],
     );
   }
   Map<String, dynamic> toMap() {
@@ -34,7 +31,6 @@ class DrugsModel {
       'risks': risks,
       'requires_prescription': requiresPrescription,
       'is_rare': isRare,
-      'is_preferred': isPreferred,
     };
   }
 }
