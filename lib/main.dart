@@ -1,4 +1,5 @@
 import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_cubit.dart';
+import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
 import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/log_in_view.dart';
 import 'package:doctorapp/view/main_views.dart';
@@ -41,6 +42,7 @@ class DoctorApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<DailyInfoCubit>(create: (context) => DailyInfoCubit()),
+        BlocProvider<DrugsCubit>(create: (context) => DrugsCubit()),
       ],
       child: MaterialApp(
         theme: Provider.of<ThemeProvider>(context).currentTheme,

@@ -10,7 +10,8 @@ class DailyInformationService {
         .from(SupaBaseKeys.dailyInfo)
         .select()
         .eq('daily_date', today)
-        .maybeSingle();
+        .limit(1)
+        .single();
     final dailyInfo = DailyInformationModel.fromJson(response);
     return dailyInfo;
   }

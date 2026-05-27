@@ -1,9 +1,10 @@
+import 'package:doctorapp/model/drugs_model.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
 class MedicineContainer extends StatelessWidget {
-  const MedicineContainer({super.key});
-
+  const MedicineContainer({super.key, required this.drug});
+  final DrugsModel drug;
   @override
   Widget build(BuildContext context) {
     ValueNotifier<bool> isFavorite = ValueNotifier(false);
@@ -36,7 +37,7 @@ class MedicineContainer extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                'Paracetamol - باراسيتامول',
+                drug.name,
                 style: AppStyle.containerText(
                   context,
                   AppStyle.title1,
@@ -50,7 +51,7 @@ class MedicineContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 1.20),
             child: Text(
-              'يعالج صداع الرأس والحمى ,ويساعد في تخفيف آلام العضلات والمفاصل, والآلام الناتجة عن نزلات البرد والإنفلونزا',
+              drug.indications,
               textDirection: TextDirection.rtl,
               softWrap: true,
               maxLines: 3,
@@ -62,7 +63,7 @@ class MedicineContainer extends StatelessWidget {
             ),
           ),
           Text(
-            'الجرعات العالية قد تسبب تضرر الكبد',
+            drug.risks,
             textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
@@ -72,13 +73,15 @@ class MedicineContainer extends StatelessWidget {
             ),
           ),
           Text(
-            'لا يحتاج الباراسيتامول إلى وصفة طبية',
+            drug.requiresPrescription
+                ? 'لا يحتاج إلى وصفة طبية'
+                : 'يحتاج إلى وصفة طبية',
             textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
               AppStyle.body,
               FontWeight.w800,
-              Colors.green,
+              drug.requiresPrescription ? Colors.green : Colors.blue.shade500,
             ),
           ),
         ],

@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_cubit.dart';
 import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_state.dart';
+import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
+import 'package:doctorapp/cubits/drugsCubit/drugs_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/info_label.dart';
@@ -21,6 +25,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     BlocProvider.of<DailyInfoCubit>(context).getDailyInfo();
+    BlocProvider.of<DrugsCubit>(context).getDrugs();
   }
 
   @override
@@ -150,7 +155,7 @@ class _HomeViewState extends State<HomeView> {
                           child: Padding(
                             padding: const EdgeInsets.all(12),
                             child: CircularProgressIndicator(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
                         );
@@ -180,13 +185,39 @@ class _HomeViewState extends State<HomeView> {
                       icon2: Icons.remove_red_eye,
                     ),
                   ),
-                  ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    itemCount: 19,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return MedicineContainer();
+                  BlocBuilder<DrugsCubit, DrugsState>(
+                    builder: (context, state) {
+                      if (state is DrugsSuccess) {
+                        log(state.drugs.length.toString());
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          itemCount: state.drugs.length,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return MedicineContainer(drug: state.drugs[index]);
+                          },
+                        );
+                      } else if (state is DrugsLoading) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        );
+                      } else if (state is DrugsError) {
+                        return Center(
+                          child: Text(
+                            'حدث خطأ في جلب الادوية',
+                            style: AppStyle.customText(
+                              context,
+                              AppStyle.body,
+                              FontWeight.w700,
+                            ),
+                          ),
+                        );
+                      } else {
+                        return SizedBox.shrink();
+                      }
                     },
                   ),
                 ],
