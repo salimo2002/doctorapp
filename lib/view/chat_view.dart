@@ -1,3 +1,5 @@
+import 'package:doctorapp/model/chat_model.dart';
+import 'package:doctorapp/services/chat_service.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/chat_bubble.dart';
 import 'package:doctorapp/widgets/chat_text_field.dart';
@@ -14,6 +16,21 @@ class ChatView extends StatefulWidget {
 class _ChatViewState extends State<ChatView> {
   TextEditingController message = TextEditingController();
   FocusNode messageFocus = FocusNode();
+  ScrollController scrollController = ScrollController();
+  List<ChatModel> messages = [];
+  bool isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    messages.add(
+      ChatModel(
+        content:
+            "مرحباً بك. أنا مساعدك الطبي المخصص للبحث في دليل الأدوية بذكاء. كيف يمكنني مساعدتك اليوم؟",
+        sendByMe: false,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,8 +44,8 @@ class _ChatViewState extends State<ChatView> {
                 SizedBox(width: 20),
                 Lottie.asset(
                   'assets/animations/robot hello.json',
-                  width: 80,
-                  height: 80,
+                  width: 60,
+                  height: 60,
                 ),
                 Spacer(),
                 Text(
@@ -42,25 +59,15 @@ class _ChatViewState extends State<ChatView> {
               ],
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  ChatBubble(
-                    message: 'مرحبا كيف يمكنني مساعدتك',
-                    sendByMe: false,
-                  ),
-                  ChatBubble(
-                    message: 'مرحبا كيف يمكنني مساعدتك',
-                    sendByMe: true,
-                  ),
-                  ChatBubble(
-                    message: 'مرحبا كيف يمكنني مساعدتك',
-                    sendByMe: false,
-                  ),
-                  ChatBubble(
-                    message: 'مرحبا كيف يمكنني مساعدتك',
-                    sendByMe: true,
-                  ),
-                ],
+              child: ListView.builder(
+                controller: scrollController,
+                itemCount: messages.length,
+                itemBuilder: (context, index) {
+                  return ChatBubble(
+                    message: messages[index].content,
+                    sendByMe: messages[index].sendByMe,
+                  );
+                },
               ),
             ),
             Row(
@@ -75,13 +82,23 @@ class _ChatViewState extends State<ChatView> {
                     ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.send,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
+                isLoading
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      )
+                    : IconButton(
+                        color: Theme.of(context).colorScheme.primary,
+                        onPressed: sendMessage,
+                        icon: Icon(Icons.send),
+                      ),
               ],
             ),
             SizedBox(height: 10),
@@ -89,5 +106,40 @@ class _ChatViewState extends State<ChatView> {
         ),
       ),
     );
+  }
+
+  void sendMessage() async {
+    String query = message.text.trim();
+    if (query.isEmpty || isLoading) return;
+
+    message.clear();
+
+    setState(() {
+      messages.add(ChatModel(content: query, sendByMe: true));
+      isLoading = true;
+    });
+
+    _scrollToBottom();
+
+    String response = await ChatService.askAboutDrug(query);
+
+    setState(() {
+      messages.add(ChatModel(content: response, sendByMe: false));
+      isLoading = false;
+    });
+
+    _scrollToBottom();
+  }
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollController.hasClients) {
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOut,
+        );
+      }
+    });
   }
 }
