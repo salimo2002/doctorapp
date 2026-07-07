@@ -40,7 +40,7 @@ class MedicineContainer extends StatelessWidget {
                 drug.name,
                 style: AppStyle.containerText(
                   context,
-                  AppStyle.title1,
+                  AppStyle.title2,
                   FontWeight.bold,
                   Colors.blue.shade500,
                 ),
@@ -57,7 +57,7 @@ class MedicineContainer extends StatelessWidget {
               maxLines: 3,
               style: AppStyle.customText(
                 context,
-                AppStyle.body,
+                AppStyle.bodySmall,
                 FontWeight.w700,
               ),
             ),
@@ -67,7 +67,7 @@ class MedicineContainer extends StatelessWidget {
             textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
-              AppStyle.body,
+              AppStyle.bodySmall,
               FontWeight.w800,
               Colors.red,
             ),
@@ -79,7 +79,7 @@ class MedicineContainer extends StatelessWidget {
             textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
-              AppStyle.body,
+              AppStyle.bodySmall,
               FontWeight.w800,
               drug.requiresPrescription ? Colors.green : Colors.blue.shade500,
             ),

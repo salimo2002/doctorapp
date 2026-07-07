@@ -5,7 +5,9 @@ class SmallCategories extends StatefulWidget {
   const SmallCategories({
     super.key,
     required this.label1,
-    required this.label2, required this.icon1, required this.icon2,
+    required this.label2,
+    required this.icon1,
+    required this.icon2,
   });
   final String label1;
   final String label2;

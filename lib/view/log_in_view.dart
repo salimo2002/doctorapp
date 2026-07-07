@@ -22,6 +22,7 @@ class _LogInViewState extends State<LogInView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Container(
         decoration: AppStyle.decoratedBackground(context),
         width: double.infinity,
@@ -96,7 +97,7 @@ class _LogInViewState extends State<LogInView> {
                           'نسيت كلمة المرور؟',
                           style: AppStyle.containerText(
                             context,
-                            18,
+                            AppStyle.title2,
                             FontWeight.bold,
                             Theme.of(context).colorScheme.primary,
                           ),

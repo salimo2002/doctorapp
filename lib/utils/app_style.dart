@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppStyle {
-  static const double h1 = 28;
+  static const double h1 = 24;
   static const double h2 = 24;
   static const double h3 = 20;
   static const double title1 = 18;
   static const double title2 = 16;
   static const double body = 15;
-  static const double bodySmall = 13;
+  static const double bodySmall = 14;
   static const double caption = 12;
   static TextStyle customText(
     BuildContext context,

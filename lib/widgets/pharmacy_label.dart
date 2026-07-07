@@ -28,7 +28,7 @@ class PharmacyLabel extends StatelessWidget {
         OpenOrClosePharmasy(isOpen: isOpen),
         Text(
           pharmacyLabel,
-          style: AppStyle.customText(context, AppStyle.h3, FontWeight.bold),
+          style: AppStyle.customText(context, AppStyle.title2, FontWeight.bold),
         ),
       ],
     );

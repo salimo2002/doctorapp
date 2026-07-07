@@ -12,7 +12,7 @@ class PharmaciesView extends StatelessWidget {
     return Container(
       decoration: AppStyle.decoratedBackground(context),
       child: Padding(
-        padding: const EdgeInsets.only(left: 12, right: 12, top: 40),
+        padding: const EdgeInsets.only(left: 12, right: 12, top: 50),
         child: Column(
           children: [
             Center(
@@ -39,7 +39,7 @@ class PharmaciesView extends StatelessWidget {
             SizedBox(
               height: 40,
               child: SmallCategories(
-                label1: 'الصيدليات',
+                label1: 'جميع الصيدليات    ',
                 label2: 'الصيدليات المناوبة',
                 icon1: Icons.local_pharmacy,
                 icon2: Icons.schedule,

@@ -60,6 +60,7 @@ class _ChatViewState extends State<ChatView> {
             ),
             Expanded(
               child: ListView.builder(
+                padding: EdgeInsets.only(top: 10),
                 controller: scrollController,
                 itemCount: messages.length,
                 itemBuilder: (context, index) {
@@ -111,18 +112,13 @@ class _ChatViewState extends State<ChatView> {
   void sendMessage() async {
     String query = message.text.trim();
     if (query.isEmpty || isLoading) return;
-
     message.clear();
-
     setState(() {
       messages.add(ChatModel(content: query, sendByMe: true));
       isLoading = true;
     });
-
     _scrollToBottom();
-
     String response = await ChatService.askAboutDrug(query);
-
     setState(() {
       messages.add(ChatModel(content: response, sendByMe: false));
       isLoading = false;

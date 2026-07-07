@@ -22,7 +22,7 @@ class PharmacyDetails extends StatelessWidget {
             textDirection: TextDirection.rtl,
             style: AppStyle.containerText(
               context,
-              AppStyle.title2,
+              AppStyle.body,
               FontWeight.normal,
               Theme.of(context).colorScheme.tertiary,
             ),
