@@ -1,6 +1,7 @@
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bidi_text/bidi_text_field.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bidi_text/bidi_text_form_field.dart';
 
 class ChatTextField extends StatelessWidget {
   const ChatTextField({
@@ -9,15 +10,26 @@ class ChatTextField extends StatelessWidget {
     required this.hint,
     this.suffixIcon,
     required this.focusNode,
+    this.inputType,
+    this.obs = false, this.validator,
   });
 
   final TextEditingController controller;
   final String hint;
   final Widget? suffixIcon;
   final FocusNode focusNode;
+  final TextInputType? inputType;
+  final bool? obs;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
-    return BidiTextField(
+    return BidiTextFormField(
+      validator: validator,
+      obscureText: obs!,
+      inputFormatters: inputType != null
+          ? [FilteringTextInputFormatter.digitsOnly]
+          : [],
+      keyboardType: inputType,
       controller: controller,
       focusNode: focusNode,
       decoration: InputDecoration(
