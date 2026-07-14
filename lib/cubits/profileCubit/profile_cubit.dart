@@ -39,4 +39,22 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ProfileError("حدث خطأ أثناء تحديث البيانات"));
     }
   }
+
+  Future<void> changePassword({
+    required int userId,
+    required String newPassword,
+  }) async {
+    emit(ProfileLoading());
+
+    try {
+      final updatedUser = await ProfileService.changePassword(
+        userId: userId,
+        newPassword: newPassword,
+      );
+      currentUser = updatedUser;
+      emit(ProfileSuccess(updatedUser, "تم تغيير كلمة المرور بنجاح"));
+    } catch (e) {
+      emit(ProfileError(e.toString()));
+    }
+  }
 }

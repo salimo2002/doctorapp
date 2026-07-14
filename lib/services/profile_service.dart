@@ -33,4 +33,18 @@ class ProfileService {
 
     return AppUsers.fromJson(response);
   }
+
+  static Future<AppUsers> changePassword({
+    required int userId,
+    required String newPassword,
+  }) async {
+    final updateResponse = await _client
+        .from('app_users')
+        .update({'password': newPassword})
+        .eq('id', userId)
+        .select()
+        .single();
+
+    return AppUsers.fromJson(updateResponse);
+  }
 }

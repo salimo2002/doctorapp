@@ -250,9 +250,9 @@ class _LogInViewState extends State<LogInView> {
                       },
                       builder: (context, state) {
                         if (state is AuthLoading) {
-                          return CircularProgressIndicator(
-                            color: Theme.of(context).colorScheme.primary,
-                          );
+                            return CircularProgressIndicator(
+                              color: Theme.of(context).colorScheme.primary,
+                            );
                         }
                         return CustomButton(
                           label: 'تسجيل الدخول',

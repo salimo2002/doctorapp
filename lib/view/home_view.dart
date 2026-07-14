@@ -25,14 +25,15 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+    context.read<ProfileCubit>().loadUser(
+      BlocProvider.of<AuthCubit>(context).currentUser!.id,
+    );
     BlocProvider.of<DailyInfoCubit>(context).getDailyInfo();
     BlocProvider.of<DrugsCubit>(context).getDrugs();
     BlocProvider.of<FavoritesCubit>(
       context,
     ).loadFavorites(BlocProvider.of<AuthCubit>(context).currentUser!.id);
-    context.read<ProfileCubit>().loadUser(
-      BlocProvider.of<AuthCubit>(context).currentUser!.id,
-    );
+    
   }
 
   @override

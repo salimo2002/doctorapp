@@ -159,6 +159,9 @@ class _PersonalInfoViewState extends State<PersonalInfoView> {
                             ).colorScheme.primary,
                           ),
                         );
+                        context.read<ProfileCubit>().loadUser(
+                          context.read<AuthCubit>().currentUser!.id,
+                        );
                       }
                       if (state is ProfileError) {
                         ScaffoldMessenger.of(context).showSnackBar(

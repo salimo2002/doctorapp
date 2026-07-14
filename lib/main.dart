@@ -6,6 +6,7 @@ import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
 import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/log_in_view.dart';
 import 'package:doctorapp/view/main_views.dart';
+import 'package:doctorapp/view/password_reset_view.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
 import 'package:doctorapp/view/register_view.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,7 @@ class DoctorApp extends StatelessWidget {
           LogInView.id: (context) => LogInView(),
           RegisterView.id: (context) => RegisterView(),
           PersonalInfoView.id: (context) => PersonalInfoView(),
+          PasswordResetView.id: (context) => PasswordResetView(),
         },
         initialRoute: LogInView.id,
       ),

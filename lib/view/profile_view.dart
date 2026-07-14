@@ -1,6 +1,7 @@
-import 'package:doctorapp/cubits/authCubit/auth_cubit.dart';
 import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
+import 'package:doctorapp/cubits/profileCubit/profile_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
+import 'package:doctorapp/view/password_reset_view.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/dark_or_light_mode.dart';
@@ -8,14 +9,9 @@ import 'package:doctorapp/widgets/setting_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProfileView extends StatefulWidget {
+class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
-  @override
-  State<ProfileView> createState() => _ProfileViewState();
-}
-
-class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,25 +38,37 @@ class _ProfileViewState extends State<ProfileView> {
                     children: [
                       Image.asset('assets/images/211.png', width: 150),
                       SizedBox(height: 5),
-                      Text(
-                        context
-                            .read<ProfileCubit>()
-                            .currentUser!
-                            .fullName
-                            .toString(),
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.h2,
-                          FontWeight.bold,
-                        ),
+                      BlocBuilder<ProfileCubit, ProfileState>(
+                        builder: (context, state) {
+                          if (state is ProfileLoaded) {
+                            return Text(
+                              state.user.fullName!,
+                              style: AppStyle.customText(
+                                context,
+                                AppStyle.h2,
+                                FontWeight.bold,
+                              ),
+                            );
+                          } else {
+                            return SizedBox.shrink();
+                          }
+                        },
                       ),
-                      Text(
-                        '+${context.read<AuthCubit>().currentUser!.phoneNumber.toString()}',
-                        style: AppStyle.customText(
-                          context,
-                          AppStyle.title2,
-                          FontWeight.bold,
-                        ),
+                      BlocBuilder<ProfileCubit, ProfileState>(
+                        builder: (context, state) {
+                          if (state is ProfileLoaded) {
+                            return Text(
+                              '+${state.user.phoneNumber}',
+                              style: AppStyle.customText(
+                                context,
+                                AppStyle.title2,
+                                FontWeight.bold,
+                              ),
+                            );
+                          } else {
+                            return SizedBox.shrink();
+                          }
+                        },
                       ),
                       SizedBox(height: 20),
                       CustomContainer(
@@ -76,7 +84,12 @@ class _ProfileViewState extends State<ProfileView> {
                           SettingAction(
                             icon: Icons.lock_outline,
                             title: 'تغيير كلمة المرور',
-                            ontap: () {},
+                            ontap: () {
+                              Navigator.pushNamed(
+                                context,
+                                PasswordResetView.id,
+                              );
+                            },
                           ),
                           SizedBox(height: 18),
                           SettingAction(
@@ -84,7 +97,6 @@ class _ProfileViewState extends State<ProfileView> {
                             title: 'سياسة الاستخدام',
                             ontap: () {},
                           ),
-
                           SizedBox(height: 18),
                           SettingAction(
                             icon: Icons.info_outline,
