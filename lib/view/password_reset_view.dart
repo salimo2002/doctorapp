@@ -1,8 +1,6 @@
-import 'package:doctorapp/cubits/authCubit/auth_state.dart';
 import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
 import 'package:doctorapp/cubits/profileCubit/profile_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
-import 'package:doctorapp/view/home_view.dart';
 import 'package:doctorapp/view/main_views.dart';
 import 'package:doctorapp/widgets/chat_text_field.dart';
 import 'package:doctorapp/widgets/custom_button.dart';

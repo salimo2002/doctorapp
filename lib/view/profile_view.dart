@@ -1,8 +1,10 @@
 import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
 import 'package:doctorapp/cubits/profileCubit/profile_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
+import 'package:doctorapp/view/about_app_view.dart';
 import 'package:doctorapp/view/password_reset_view.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
+import 'package:doctorapp/view/usage_policy_view.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/dark_or_light_mode.dart';
 import 'package:doctorapp/widgets/setting_action.dart';
@@ -95,13 +97,17 @@ class ProfileView extends StatelessWidget {
                           SettingAction(
                             icon: Icons.policy_outlined,
                             title: 'سياسة الاستخدام',
-                            ontap: () {},
+                            ontap: () {
+                              Navigator.pushNamed(context, UsagePolicyView.id);
+                            },
                           ),
                           SizedBox(height: 18),
                           SettingAction(
                             icon: Icons.info_outline,
                             title: 'حول التطبيق',
-                            ontap: () {},
+                            ontap: () {
+                              Navigator.pushNamed(context, AboutAppView.id);
+                            },
                           ),
                           SizedBox(height: 16),
                           DarkOrLightMode(),

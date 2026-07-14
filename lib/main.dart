@@ -4,10 +4,12 @@ import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
 import 'package:doctorapp/cubits/favoritesCubit/favorites_cubit.dart';
 import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
 import 'package:doctorapp/theme/theme_provider.dart';
+import 'package:doctorapp/view/about_app_view.dart';
 import 'package:doctorapp/view/log_in_view.dart';
 import 'package:doctorapp/view/main_views.dart';
 import 'package:doctorapp/view/password_reset_view.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
+import 'package:doctorapp/view/usage_policy_view.dart';
 import 'package:doctorapp/view/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,6 +62,8 @@ class DoctorApp extends StatelessWidget {
           RegisterView.id: (context) => RegisterView(),
           PersonalInfoView.id: (context) => PersonalInfoView(),
           PasswordResetView.id: (context) => PasswordResetView(),
+          AboutAppView.id: (context) => AboutAppView(),
+          UsagePolicyView.id: (context) => UsagePolicyView(),
         },
         initialRoute: LogInView.id,
       ),
