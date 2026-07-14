@@ -1,7 +1,10 @@
+import 'package:doctorapp/cubits/authCubit/auth_cubit.dart';
 import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_cubit.dart';
 import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_state.dart';
 import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
 import 'package:doctorapp/cubits/drugsCubit/drugs_state.dart';
+import 'package:doctorapp/cubits/favoritesCubit/favorites_cubit.dart';
+import 'package:doctorapp/cubits/favoritesCubit/favorites_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/daily_info_list.dart';
 import 'package:doctorapp/widgets/medicine_container.dart';
@@ -23,6 +26,9 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     BlocProvider.of<DailyInfoCubit>(context).getDailyInfo();
     BlocProvider.of<DrugsCubit>(context).getDrugs();
+    BlocProvider.of<FavoritesCubit>(
+      context,
+    ).loadFavorites(BlocProvider.of<AuthCubit>(context).currentUser!.id);
   }
 
   @override
@@ -91,46 +97,77 @@ class _HomeViewState extends State<HomeView> {
                     },
                   ),
                   SizedBox(height: 10),
-                  BlocBuilder<DrugsCubit, DrugsState>(
-                    builder: (context, state) {
-                      if (state is DrugsSuccess) {
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: 40,
-                              child: SmallCategories(
-                                label1: 'جميع الادوية',
-                                icon1: Icons.link,
-                                label2: 'الادوية المفقودة',
-                                icon2: Icons.remove_red_eye,
+                  BlocListener<FavoritesCubit, FavoritesState>(
+                    listenWhen: (previous, current) =>
+                        current is FavoriteActionSuccess,
+                    listener: (context, state) {
+                      if (state is FavoriteActionSuccess) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            duration: Duration(seconds: 1),
+                            content: Text(
+                              state.message,
+                              textAlign: TextAlign.center,
+                              style: AppStyle.containerText(
+                                context,
+                                AppStyle.bodySmall,
+                                FontWeight.bold,
+                                Colors.white,
                               ),
                             ),
-                            ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              itemCount: state.drugs.length,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return MedicineContainer(
-                                  drug: state.drugs[index],
-                                );
-                              },
-                            ),
-                          ],
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.primary,
+                          ),
                         );
-                      } else if (state is DrugsLoading) {
-                        return Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
+                      }
+                    },
+                    child: BlocBuilder<DrugsCubit, DrugsState>(
+                      builder: (context, state) {
+                        if (state is DrugsSuccess) {
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: 40,
+                                child: SmallCategories(
+                                  label1: 'جميع الادوية',
+                                  icon1: Icons.link,
+                                  label2: 'الادوية المفقودة',
+                                  icon2: Icons.remove_red_eye,
+                                ),
+                              ),
+                              ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                itemCount: state.drugs.length,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return MedicineContainer(
+                                    drug: state.drugs[index],
+                                    ontap: () async {
+                                      await context
+                                          .read<FavoritesCubit>()
+                                          .toggleFavorite(
+                                            userId: context
+                                                .read<AuthCubit>()
+                                                .currentUser!
+                                                .id,
+                                            drugId: state.drugs[index].id,
+                                          );
+                                    },
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        } else if (state is DrugsLoading) {
+                          return Center(
                             child: CircularProgressIndicator(
                               color: Theme.of(context).colorScheme.primary,
                             ),
-                          ),
-                        );
-                      } else if (state is DrugsError) {
-                        return Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
+                          );
+                        } else if (state is DrugsError) {
+                          return Center(
                             child: Text(
                               'حدث خطأ في جلب الادوية',
                               style: AppStyle.customText(
@@ -139,12 +176,12 @@ class _HomeViewState extends State<HomeView> {
                                 FontWeight.w700,
                               ),
                             ),
-                          ),
-                        );
-                      } else {
-                        return SizedBox.shrink();
-                      }
-                    },
+                          );
+                        } else {
+                          return SizedBox.shrink();
+                        }
+                      },
+                    ),
                   ),
                 ],
               ),

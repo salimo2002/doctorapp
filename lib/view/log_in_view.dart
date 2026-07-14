@@ -1,6 +1,8 @@
 import 'package:doctorapp/cubits/authCubit/auth_cubit.dart';
 import 'package:doctorapp/cubits/authCubit/auth_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
+import 'package:doctorapp/view/main_views.dart';
+import 'package:doctorapp/view/otp_view.dart';
 import 'package:doctorapp/view/register_view.dart';
 import 'package:doctorapp/widgets/chat_text_field.dart';
 import 'package:doctorapp/widgets/custom_button.dart';
@@ -10,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LogInView extends StatefulWidget {
   const LogInView({super.key});
+
   static String id = 'log_in_view';
 
   @override
@@ -23,15 +26,28 @@ class _LogInViewState extends State<LogInView> {
   late FocusNode passwordFocus;
   late AuthCubit authCubit;
   late GlobalKey<FormState> globalKey;
+
   @override
   void initState() {
+    super.initState();
+
     globalKey = GlobalKey<FormState>();
     authCubit = context.read<AuthCubit>();
+
     phoneController = TextEditingController();
     passwordController = TextEditingController();
+
     phoneFocus = FocusNode();
     passwordFocus = FocusNode();
-    super.initState();
+  }
+
+  @override
+  void dispose() {
+    phoneController.dispose();
+    passwordController.dispose();
+    phoneFocus.dispose();
+    passwordFocus.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,15 +60,18 @@ class _LogInViewState extends State<LogInView> {
           decoration: AppStyle.decoratedBackground(context),
           width: double.infinity,
           child: Padding(
-            padding: EdgeInsets.only(left: 24, right: 24),
+            padding: const EdgeInsets.only(left: 24, right: 24),
             child: ListView(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height * .08),
+
                     Image.asset('assets/images/211.png', width: 150),
-                    SizedBox(height: 10),
+
+                    const SizedBox(height: 10),
+
                     Text(
                       'المستشار الذكي',
                       style: AppStyle.containerText(
@@ -62,7 +81,9 @@ class _LogInViewState extends State<LogInView> {
                         Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    SizedBox(height: 5),
+
+                    const SizedBox(height: 5),
+
                     Text(
                       'مرحبا بعودتك',
                       style: AppStyle.customText(
@@ -71,7 +92,9 @@ class _LogInViewState extends State<LogInView> {
                         FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 5),
+
+                    const SizedBox(height: 5),
+
                     Text(
                       'سجل دخولك للوصول الى ادويتك',
                       style: AppStyle.customText(
@@ -80,9 +103,13 @@ class _LogInViewState extends State<LogInView> {
                         FontWeight.normal,
                       ),
                     ),
-                    SizedBox(height: 10),
-                    TextFieldLabel(label: 'رقم الهاتف'),
-                    SizedBox(height: 5),
+
+                    const SizedBox(height: 10),
+
+                    const TextFieldLabel(label: 'رقم الهاتف'),
+
+                    const SizedBox(height: 5),
+
                     ChatTextField(
                       validator: (value) {
                         if (value == '' || value == null) {
@@ -99,9 +126,13 @@ class _LogInViewState extends State<LogInView> {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    SizedBox(height: 10),
-                    TextFieldLabel(label: 'كلمة المرور'),
-                    SizedBox(height: 5),
+
+                    const SizedBox(height: 10),
+
+                    const TextFieldLabel(label: 'كلمة المرور'),
+
+                    const SizedBox(height: 5),
+
                     ChatTextField(
                       validator: (value) {
                         if (value == '' || value == null) {
@@ -118,7 +149,9 @@ class _LogInViewState extends State<LogInView> {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    SizedBox(height: 5),
+
+                    const SizedBox(height: 5),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -134,20 +167,84 @@ class _LogInViewState extends State<LogInView> {
                             ),
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                       ],
                     ),
-                    SizedBox(height: 20),
+
+                    const SizedBox(height: 20),
+
                     BlocConsumer<AuthCubit, AuthState>(
                       listener: (context, state) {
                         if (state is AuthSuccess) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('تم تسجيل الدخوووووووووول')),
+                            SnackBar(
+                              duration: Duration(seconds: 1),
+                              content: Text(
+                                'تم تسجيل الدخول بنجاح',
+                                textAlign: TextAlign.center,
+                                style: AppStyle.containerText(
+                                  context,
+                                  AppStyle.bodySmall,
+                                  FontWeight.bold,
+                                  Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.primary,
+                            ),
+                          );
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            MainViews.id,
+                            (route) => false,
                           );
                         }
+
+                        if (state is AuthOtpSent) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              duration: Duration(seconds: 1),
+                              content: Text(
+                                'تم إرسال رمز التحقق إلى واتساب',
+                                textAlign: TextAlign.center,
+                                style: AppStyle.containerText(
+                                  context,
+                                  AppStyle.bodySmall,
+                                  FontWeight.bold,
+                                  Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.primary,
+                            ),
+                          );
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => OtpView(phone: state.phone),
+                            ),
+                          );
+                        }
+
                         if (state is AuthFailure) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(state.message)),
+                            SnackBar(
+                              duration: Duration(seconds: 1),
+                              content: Text(
+                                state.message,
+                                textAlign: TextAlign.center,
+                                style: AppStyle.containerText(
+                                  context,
+                                  AppStyle.bodySmall,
+                                  FontWeight.bold,
+                                  Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
+                            ),
                           );
                         }
                       },
@@ -156,22 +253,23 @@ class _LogInViewState extends State<LogInView> {
                           return CircularProgressIndicator(
                             color: Theme.of(context).colorScheme.primary,
                           );
-                        } else {
-                          return CustomButton(
-                            label: 'تسجيل الدخول',
-                            onPressed: () {
-                              if (globalKey.currentState!.validate()) {
-                                authCubit.login(
-                                  phone: phoneController.text,
-                                  password: passwordController.text,
-                                );
-                              }
-                            },
-                          );
                         }
+                        return CustomButton(
+                          label: 'تسجيل الدخول',
+                          onPressed: () {
+                            if (globalKey.currentState!.validate()) {
+                              authCubit.login(
+                                phone: phoneController.text.trim(),
+                                password: passwordController.text.trim(),
+                              );
+                            }
+                          },
+                        );
                       },
                     ),
-                    SizedBox(height: 20),
+
+                    const SizedBox(height: 20),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -189,7 +287,9 @@ class _LogInViewState extends State<LogInView> {
                             ),
                           ),
                         ),
-                        SizedBox(width: 5),
+
+                        const SizedBox(width: 5),
+
                         Text(
                           'ليس لديك حساب؟',
                           style: AppStyle.customText(

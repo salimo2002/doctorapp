@@ -1,6 +1,7 @@
 import 'package:doctorapp/cubits/authCubit/auth_cubit.dart';
 import 'package:doctorapp/cubits/dailyInformationCubit/daily_info_cubit.dart';
 import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
+import 'package:doctorapp/cubits/favoritesCubit/favorites_cubit.dart';
 import 'package:doctorapp/theme/theme_provider.dart';
 import 'package:doctorapp/view/log_in_view.dart';
 import 'package:doctorapp/view/main_views.dart';
@@ -45,6 +46,7 @@ class DoctorApp extends StatelessWidget {
         BlocProvider<DailyInfoCubit>(create: (context) => DailyInfoCubit()),
         BlocProvider<DrugsCubit>(create: (context) => DrugsCubit()),
         BlocProvider<AuthCubit>(create: (context) => AuthCubit()),
+        BlocProvider<FavoritesCubit>(create: (context) => FavoritesCubit()),
       ],
       child: MaterialApp(
         theme: Provider.of<ThemeProvider>(context).currentTheme,

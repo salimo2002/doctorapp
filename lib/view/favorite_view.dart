@@ -1,6 +1,12 @@
+import 'package:doctorapp/cubits/authCubit/auth_cubit.dart';
+import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
+import 'package:doctorapp/cubits/favoritesCubit/favorites_cubit.dart';
+import 'package:doctorapp/cubits/favoritesCubit/favorites_state.dart';
 import 'package:doctorapp/utils/app_style.dart';
+import 'package:doctorapp/widgets/medicine_container.dart';
 import 'package:doctorapp/widgets/no_favorite_medicines.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteView extends StatelessWidget {
   const FavoriteView({super.key});
@@ -24,9 +30,53 @@ class FavoriteView extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView(
-                padding: EdgeInsets.only(top: 5),
-                children: [NoFavoriteMedicines()],
+              child: BlocBuilder<FavoritesCubit, FavoritesState>(
+                builder: (context, state) {
+                  if (state is FavoritesLoading) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    );
+                  } else if (state is FavoritesSuccess) {
+                    final favoriteIds = state.favoriteDrugIds;
+                    if (favoriteIds.isEmpty) {
+                      return NoFavoriteMedicines();
+                    }
+                    final allDrugs = context.read<DrugsCubit>().drugs;
+                    final favoriteDrugs = allDrugs
+                        .where((drug) => favoriteIds.contains(drug.id))
+                        .toList();
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      itemCount: favoriteDrugs.length,
+                      itemBuilder: (context, index) {
+                        return MedicineContainer(
+                          drug: favoriteDrugs[index],
+                          ontap: () async {
+                            await context.read<FavoritesCubit>().toggleFavorite(
+                              userId: context.read<AuthCubit>().currentUser!.id,
+                              drugId: favoriteDrugs[index].id,
+                            );
+                          },
+                        );
+                      },
+                    );
+                  } else if (state is FavoritesFaliure) {
+                    return Center(
+                      child: Text(
+                        'حدث خطأ في جلب المفضلة',
+                        style: AppStyle.customText(
+                          context,
+                          AppStyle.body,
+                          FontWeight.w700,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return SizedBox.shrink();
+                  }
+                },
               ),
             ),
           ],

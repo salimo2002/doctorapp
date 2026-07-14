@@ -8,10 +8,12 @@ class AuthSuccess extends AuthState {}
 
 class AuthFailure extends AuthState {
   final String message;
+
   AuthFailure(this.message);
 }
 
 class AuthOtpSent extends AuthState {
   final String phone;
+
   AuthOtpSent(this.phone);
 }

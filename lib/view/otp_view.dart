@@ -44,7 +44,20 @@ class _OtpViewState extends State<OtpView> {
                 if (state is AuthFailure) {
                   ScaffoldMessenger.of(
                     context,
-                  ).showSnackBar(SnackBar(content: Text(state.message)));
+                  ).showSnackBar(SnackBar(
+                              duration: Duration(seconds: 1),
+                              content: Text(
+                                state.message,
+                                textAlign: TextAlign.center,
+                                style: AppStyle.containerText(
+                                  context,
+                                  AppStyle.bodySmall,
+                                  FontWeight.bold,
+                                  Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
+                            ),);
                 }
               },
               builder: (context, state) {
@@ -132,8 +145,8 @@ class _OtpViewState extends State<OtpView> {
                     TextButton(
                       onPressed: state is AuthLoading
                           ? null
-                          : () {
-                              OtpService.sendOtp(widget.phone);
+                          : () async {
+                              await OtpService.sendOtp(widget.phone);
                             },
                       child: state is AuthLoading
                           ? const CircularProgressIndicator(color: Colors.white)

@@ -1,10 +1,10 @@
-import 'package:doctorapp/model/user_model.dart';
+import 'package:doctorapp/model/app_users.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AppAuthService {
   static final SupabaseClient _client = Supabase.instance.client;
 
-  static Future<UserModel?> register({
+  static Future<AppUsers?> register({
     required String phoneNumber,
     required String password,
     String? fullName,
@@ -21,6 +21,7 @@ class AppAuthService {
       if (existingUser != null) {
         throw Exception('المستخدم موجود مسبقاً');
       }
+
       final response = await _client
           .from('app_users')
           .insert({
@@ -34,13 +35,13 @@ class AppAuthService {
           .select()
           .single();
 
-      return UserModel.fromMap(response);
+      return AppUsers.fromJson(response);
     } catch (e) {
       throw Exception(e.toString());
     }
   }
 
-  static Future<UserModel?> login({
+  static Future<AppUsers?> login({
     required String phoneNumber,
     required String password,
   }) async {
@@ -59,16 +60,27 @@ class AppAuthService {
         throw Exception('كلمة المرور غير صحيحة');
       }
 
-      return UserModel.fromMap(user);
+      return AppUsers.fromJson(user);
     } catch (e) {
       throw Exception(e.toString());
     }
   }
-
-  static Future<void> verifyUserPhone(String phone) async {
-    await _client
+static Future<void> verifyUserPhone(String phone) async {
+  try {
+    final response = await _client
         .from('app_users')
-        .update({'is_whatsapp_verified': true})
-        .eq('phone_number', phone);
+        .update({
+          'is_whatsapp_verified': true,
+        })
+        .eq('phone_number', phone)
+        .select()
+        .maybeSingle();
+
+    if (response == null) {
+      throw Exception('فشل تحديث حالة التحقق');
+    }
+  } catch (e) {
+    throw Exception('خطأ أثناء تفعيل الحساب: ${e.toString()}');
   }
+}
 }

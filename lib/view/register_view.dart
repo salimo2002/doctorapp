@@ -180,7 +180,20 @@ class _RegisterViewState extends State<RegisterView> {
                           );
                         } else if (state is AuthFailure) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(state.message)),
+                           SnackBar(
+                              duration: Duration(seconds: 1),
+                              content: Text(
+                                state.message,
+                                textAlign: TextAlign.center,
+                                style: AppStyle.containerText(
+                                  context,
+                                  AppStyle.bodySmall,
+                                  FontWeight.bold,
+                                  Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
+                            ),
                           );
                         }
                       },
