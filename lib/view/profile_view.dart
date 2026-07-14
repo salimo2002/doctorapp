@@ -1,9 +1,12 @@
+import 'package:doctorapp/cubits/authCubit/auth_cubit.dart';
+import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
 import 'package:doctorapp/widgets/custom_container.dart';
 import 'package:doctorapp/widgets/dark_or_light_mode.dart';
 import 'package:doctorapp/widgets/setting_action.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -40,7 +43,11 @@ class _ProfileViewState extends State<ProfileView> {
                       Image.asset('assets/images/211.png', width: 150),
                       SizedBox(height: 5),
                       Text(
-                        'سليم محمد عويجان',
+                        context
+                            .read<ProfileCubit>()
+                            .currentUser!
+                            .fullName
+                            .toString(),
                         style: AppStyle.customText(
                           context,
                           AppStyle.h2,
@@ -48,7 +55,7 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Text(
-                        'salimosalim31@gmail.com',
+                        '+${context.read<AuthCubit>().currentUser!.phoneNumber.toString()}',
                         style: AppStyle.customText(
                           context,
                           AppStyle.title2,

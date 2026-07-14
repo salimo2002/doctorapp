@@ -5,6 +5,7 @@ import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
 import 'package:doctorapp/cubits/drugsCubit/drugs_state.dart';
 import 'package:doctorapp/cubits/favoritesCubit/favorites_cubit.dart';
 import 'package:doctorapp/cubits/favoritesCubit/favorites_state.dart';
+import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/daily_info_list.dart';
 import 'package:doctorapp/widgets/medicine_container.dart';
@@ -29,6 +30,9 @@ class _HomeViewState extends State<HomeView> {
     BlocProvider.of<FavoritesCubit>(
       context,
     ).loadFavorites(BlocProvider.of<AuthCubit>(context).currentUser!.id);
+    context.read<ProfileCubit>().loadUser(
+      BlocProvider.of<AuthCubit>(context).currentUser!.id,
+    );
   }
 
   @override

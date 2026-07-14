@@ -49,6 +49,19 @@ class _RegisterViewState extends State<RegisterView> {
   }
 
   @override
+  void dispose() {
+    phoneController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    userName.dispose();
+    phoneFocus.dispose();
+    passwordFocus.dispose();
+    confirmPasswordFocus.dispose();
+    userNameFocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: globalKey,
@@ -180,7 +193,7 @@ class _RegisterViewState extends State<RegisterView> {
                           );
                         } else if (state is AuthFailure) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(
+                            SnackBar(
                               duration: Duration(seconds: 1),
                               content: Text(
                                 state.message,
