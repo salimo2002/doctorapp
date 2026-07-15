@@ -33,7 +33,6 @@ class _HomeViewState extends State<HomeView> {
     BlocProvider.of<FavoritesCubit>(
       context,
     ).loadFavorites(BlocProvider.of<AuthCubit>(context).currentUser!.id);
-    
   }
 
   @override
@@ -133,12 +132,13 @@ class _HomeViewState extends State<HomeView> {
                           return Column(
                             children: [
                               SizedBox(
-                                height: 40,
+                                height: 50,
                                 child: SmallCategories(
-                                  label1: 'جميع الادوية',
-                                  icon1: Icons.link,
-                                  label2: 'الادوية المفقودة',
-                                  icon2: Icons.remove_red_eye,
+                                  onChanged: (isAll) {
+                                    if (isAll) {
+                                      context.read<DrugsCubit>().getDrugs();
+                                    } else {}
+                                  },
                                 ),
                               ),
                               ListView.builder(

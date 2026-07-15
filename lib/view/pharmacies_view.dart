@@ -39,10 +39,9 @@ class PharmaciesView extends StatelessWidget {
             SizedBox(
               height: 40,
               child: SmallCategories(
-                label1: 'جميع الصيدليات    ',
-                label2: 'الصيدليات المناوبة',
-                icon1: Icons.local_pharmacy,
-                icon2: Icons.schedule,
+                onChanged: (isAll) {
+                  
+                },
               ),
             ),
             SizedBox(height: 5),

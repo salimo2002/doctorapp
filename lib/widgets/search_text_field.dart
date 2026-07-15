@@ -1,4 +1,3 @@
-import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bidi_text/bidi_text_field.dart';
 
@@ -10,42 +9,58 @@ class SearchTextField extends StatelessWidget {
     required this.focusNode,
     required this.ontap,
   });
+
   final String hint;
   final TextEditingController controller;
   final FocusNode focusNode;
   final Function() ontap;
+
   @override
   Widget build(BuildContext context) {
-    return BidiTextField(
-      controller: controller,
-      focusNode: focusNode,
-      onTap: ontap,
-      textDirection: TextDirection.rtl,
-      decoration: InputDecoration(
-        suffixIcon: Icon(
-          Icons.search,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-        hint: Text(
-          hint,
-          textDirection: TextDirection.rtl,
-          style: AppStyle.customText(
-            context,
-            AppStyle.title2,
-            FontWeight.normal,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 3,
+            offset: const Offset(0, -2),
           ),
-        ),
-        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        fillColor: Colors.white30,
-        filled: true,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.transparent),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+        ],
+      ),
+      child: BidiTextField(
+        controller: controller,
+        focusNode: focusNode,
+        onTap: ontap,
+        textDirection: TextDirection.rtl,
+        decoration: InputDecoration(
+          hint: Text(
+            hint,
+            textAlign: TextAlign.right,
+            style: TextStyle(color: Colors.grey.shade600, fontSize: 18),
+          ),
+          suffixIcon: Icon(
+            Icons.search,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          filled: true,
+          fillColor: Theme.of(context).colorScheme.onPrimaryFixed,
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 8,
+            horizontal: 20,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(14),
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(14),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(14),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );

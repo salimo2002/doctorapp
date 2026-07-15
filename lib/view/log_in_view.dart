@@ -30,13 +30,10 @@ class _LogInViewState extends State<LogInView> {
   @override
   void initState() {
     super.initState();
-
     globalKey = GlobalKey<FormState>();
     authCubit = context.read<AuthCubit>();
-
-    phoneController = TextEditingController();
-    passwordController = TextEditingController();
-
+    phoneController = TextEditingController(text: '963988818024');
+    passwordController = TextEditingController(text: '112233');
     phoneFocus = FocusNode();
     passwordFocus = FocusNode();
   }
@@ -67,11 +64,8 @@ class _LogInViewState extends State<LogInView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height * .08),
-
                     Image.asset('assets/images/211.png', width: 150),
-
                     const SizedBox(height: 10),
-
                     Text(
                       'المستشار الذكي',
                       style: AppStyle.containerText(

@@ -37,7 +37,7 @@ class MedicineContainer extends StatelessWidget {
                       isFavorite
                           ? Icons.favorite
                           : Icons.favorite_border_outlined,
-                      color: isFavorite ? Colors.red : Colors.grey,
+                      color: isFavorite ? Color(0xffb02a2b) : Colors.grey,
                     ),
                   ),
                   const Spacer(),
@@ -47,7 +47,7 @@ class MedicineContainer extends StatelessWidget {
                       context,
                       AppStyle.title2,
                       FontWeight.bold,
-                      Colors.blue.shade500,
+                      Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ],
@@ -60,7 +60,7 @@ class MedicineContainer extends StatelessWidget {
                 style: AppStyle.customText(
                   context,
                   AppStyle.bodySmall,
-                  FontWeight.w700,
+                  FontWeight.bold,
                 ),
               ),
               Text(
@@ -69,8 +69,8 @@ class MedicineContainer extends StatelessWidget {
                 style: AppStyle.containerText(
                   context,
                   AppStyle.bodySmall,
-                  FontWeight.w800,
-                  Colors.red,
+                  FontWeight.bold,
+                  Color(0xffb02a2b),
                 ),
               ),
               Text(
@@ -81,10 +81,10 @@ class MedicineContainer extends StatelessWidget {
                 style: AppStyle.containerText(
                   context,
                   AppStyle.bodySmall,
-                  FontWeight.w800,
+                  FontWeight.bold,
                   drug.requiresPrescription
-                      ? Colors.green
-                      : Colors.blue.shade500,
+                      ? Color.fromARGB(255, 119, 184, 131)
+                      : Theme.of(context).colorScheme.primary,
                 ),
               ),
             ],

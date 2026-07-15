@@ -15,7 +15,7 @@ class InfoLabel extends StatelessWidget {
           label,
           style: AppStyle.customText(context, AppStyle.title1, FontWeight.bold),
         ),
-        Icon(icon, color: Colors.amber),
+        Icon(icon, color: Theme.of(context).colorScheme.primary),
       ],
     );
   }
