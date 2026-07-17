@@ -2,8 +2,14 @@ import 'package:doctorapp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
 class SmallCategories extends StatefulWidget {
-  const SmallCategories({super.key, required this.onChanged});
-
+  const SmallCategories({
+    super.key,
+    required this.onChanged,
+    required this.label1,
+    required this.label2,
+  });
+  final String label1;
+  final String label2;
   final Function(bool isAllDrugs) onChanged;
 
   @override
@@ -53,7 +59,7 @@ class _SmallCategoriesState extends State<SmallCategories> {
                     ),
                     SizedBox(width: 6),
                     Text(
-                      "جميع الأدوية",
+                      widget.label1,
                       style: AppStyle.containerText(
                         context,
                         AppStyle.bodySmall,
@@ -99,7 +105,7 @@ class _SmallCategoriesState extends State<SmallCategories> {
                     ),
                     SizedBox(width: 6),
                     Text(
-                      "الأدوية المفقودة",
+                      widget.label2,
                       style: AppStyle.containerText(
                         context,
                         AppStyle.bodySmall,

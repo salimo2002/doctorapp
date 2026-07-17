@@ -5,6 +5,7 @@ import 'package:doctorapp/cubits/drugsCubit/drugs_cubit.dart';
 import 'package:doctorapp/cubits/drugsCubit/drugs_state.dart';
 import 'package:doctorapp/cubits/favoritesCubit/favorites_cubit.dart';
 import 'package:doctorapp/cubits/favoritesCubit/favorites_state.dart';
+import 'package:doctorapp/cubits/pharmacyCubit/pharmacy_cubit.dart';
 import 'package:doctorapp/cubits/profileCubit/profile_cubit.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/widgets/daily_info_list.dart';
@@ -33,6 +34,7 @@ class _HomeViewState extends State<HomeView> {
     BlocProvider.of<FavoritesCubit>(
       context,
     ).loadFavorites(BlocProvider.of<AuthCubit>(context).currentUser!.id);
+    BlocProvider.of<PharmacyCubit>(context).loadPharmacies();
   }
 
   @override
@@ -145,6 +147,8 @@ class _HomeViewState extends State<HomeView> {
                                       );
                                     }
                                   },
+                                  label1: 'جميع الادوية',
+                                  label2: 'الادوية المفقودة',
                                 ),
                               ),
                               ListView.builder(

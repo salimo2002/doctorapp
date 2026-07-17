@@ -27,7 +27,7 @@ class PharmacyContainer extends StatelessWidget {
       cheldreen: [
         PharmacyLabel(
           pharmacyLabel: pharmacyLabel,
-          pharmacyLocation: () {},
+          pharmacyLocation: pharmacyLocation,
           isOpen: isOpen,
         ),
         PharmacyDetails(iconData: Icons.location_on, title: location),
