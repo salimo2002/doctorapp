@@ -136,8 +136,14 @@ class _HomeViewState extends State<HomeView> {
                                 child: SmallCategories(
                                   onChanged: (isAll) {
                                     if (isAll) {
-                                      context.read<DrugsCubit>().getDrugs();
-                                    } else {}
+                                      context.read<DrugsCubit>().changeFilter(
+                                        DrugsFilter.all,
+                                      );
+                                    } else {
+                                      context.read<DrugsCubit>().changeFilter(
+                                        DrugsFilter.missing,
+                                      );
+                                    }
                                   },
                                 ),
                               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData darkMode = ThemeData(
   colorScheme: ColorScheme.dark(
-    primary: const Color.fromARGB(255, 21, 98, 174),
+    primary: const Color.fromARGB(255, 51, 119, 186),
     secondary: Colors.grey,
     tertiary: Colors.white,
     surfaceTint: Colors.black,

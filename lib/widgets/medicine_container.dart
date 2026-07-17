@@ -7,10 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicineContainer extends StatelessWidget {
   const MedicineContainer({super.key, required this.drug, required this.ontap});
-
   final DrugsModel drug;
   final VoidCallback ontap;
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoritesCubit, FavoritesState>(
@@ -50,6 +48,10 @@ class MedicineContainer extends StatelessWidget {
                       Theme.of(context).colorScheme.primary,
                     ),
                   ),
+                  SizedBox(width: 5),
+                  drug.isRare
+                      ? Icon(Icons.block, color: Colors.red)
+                      : SizedBox.shrink(),
                 ],
               ),
               const SizedBox(height: 4),
@@ -87,6 +89,64 @@ class MedicineContainer extends StatelessWidget {
                       : Theme.of(context).colorScheme.primary,
                 ),
               ),
+              if (drug.isRare && drug.pharmacies.isNotEmpty) ...[
+                const SizedBox(height: 8),
+                Divider(color: Colors.grey.shade400),
+                const SizedBox(height: 5),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      "متوفر في الصيدليات التالية:",
+                      textDirection: TextDirection.rtl,
+                      style: AppStyle.containerText(
+                        context,
+                        AppStyle.bodySmall,
+                        FontWeight.bold,
+                        Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    ...drug.pharmacies.map(
+                      (pharmacy) => Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              pharmacy.pharmacyPhone,
+                              style: AppStyle.customText(
+                                context,
+                                AppStyle.bodySmall,
+                                FontWeight.w500,
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                pharmacy.pharmacyName,
+                                textDirection: TextDirection.rtl,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppStyle.customText(
+                                  context,
+                                  AppStyle.bodySmall,
+                                  FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            Icon(
+                              Icons.local_pharmacy,
+                              size: 18,
+                              color: Colors.red.shade400,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
         );

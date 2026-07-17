@@ -18,15 +18,20 @@ class DailyInfoList extends StatelessWidget {
             Row(
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  AppStyle.normalize(dailyInfo.medicalInfo1),
-                  style: AppStyle.customText(
-                    context,
-                    AppStyle.body,
-                    FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    AppStyle.normalize(dailyInfo.medicalInfo1),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.body,
+                      FontWeight.bold,
+                    ),
+                    textDirection: TextDirection.rtl,
                   ),
-                  textDirection: TextDirection.rtl,
                 ),
                 Icon(
                   Icons.check_box_outlined,
@@ -38,15 +43,20 @@ class DailyInfoList extends StatelessWidget {
             Row(
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  AppStyle.normalize(dailyInfo.medicalInfo2),
-                  style: AppStyle.customText(
-                    context,
-                    AppStyle.body,
-                    FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    AppStyle.normalize(dailyInfo.medicalInfo2),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.body,
+                      FontWeight.bold,
+                    ),
+                    textDirection: TextDirection.rtl,
                   ),
-                  textDirection: TextDirection.rtl,
                 ),
                 Icon(
                   Icons.check_box_outlined,
@@ -62,6 +72,8 @@ class DailyInfoList extends StatelessWidget {
             SizedBox(height: 5),
             Text(
               dailyInfo.drugName,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
               textDirection: TextDirection.rtl,
               style: AppStyle.customText(
                 context,
@@ -73,15 +85,20 @@ class DailyInfoList extends StatelessWidget {
             Row(
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  AppStyle.normalize(dailyInfo.indication1),
-                  style: AppStyle.customText(
-                    context,
-                    AppStyle.body,
-                    FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    AppStyle.normalize(dailyInfo.indication1),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.body,
+                      FontWeight.bold,
+                    ),
+                    textDirection: TextDirection.rtl,
                   ),
-                  textDirection: TextDirection.rtl,
                 ),
                 Icon(
                   Icons.check_circle,
@@ -93,15 +110,20 @@ class DailyInfoList extends StatelessWidget {
             Row(
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  AppStyle.normalize(dailyInfo.indication2),
-                  style: AppStyle.customText(
-                    context,
-                    AppStyle.body,
-                    FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    AppStyle.normalize(dailyInfo.indication2),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyle.customText(
+                      context,
+                      AppStyle.body,
+                      FontWeight.bold,
+                    ),
+                    textDirection: TextDirection.rtl,
                   ),
-                  textDirection: TextDirection.rtl,
                 ),
                 Icon(
                   Icons.check_circle,
@@ -113,18 +135,23 @@ class DailyInfoList extends StatelessWidget {
             Row(
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  AppStyle.normalize(dailyInfo.risks),
-                  style: AppStyle.containerText(
-                    context,
-                    AppStyle.body,
-                    FontWeight.bold,
-                    Color(0xffb02a2b),
+                Expanded(
+                  child: Text(
+                    AppStyle.normalize(dailyInfo.risks),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyle.containerText(
+                      context,
+                      AppStyle.body,
+                      FontWeight.bold,
+                      AppStyle.redColor,
+                    ),
+                    textDirection: TextDirection.rtl,
                   ),
-                  textDirection: TextDirection.rtl,
                 ),
-                Icon(Icons.warning, color: Color(0xffb02a2b)),
+                Icon(Icons.warning, color: AppStyle.redColor),
               ],
             ),
           ],

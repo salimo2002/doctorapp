@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStyle {
+  static const Color redColor = Color(0xffb02a2b);
   static const double h1 = 24;
   static const double h2 = 24;
   static const double h3 = 20;

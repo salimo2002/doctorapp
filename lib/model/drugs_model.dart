@@ -1,3 +1,5 @@
+import 'missing_pharmacy_model.dart';
+
 class DrugsModel {
   final int id;
   final String name;
@@ -6,6 +8,8 @@ class DrugsModel {
   final bool requiresPrescription;
   final bool isRare;
 
+  final List<MissingPharmacyModel> pharmacies;
+
   DrugsModel({
     required this.id,
     required this.name,
@@ -13,24 +17,26 @@ class DrugsModel {
     required this.risks,
     required this.requiresPrescription,
     required this.isRare,
+    required this.pharmacies,
   });
-  factory DrugsModel.fromJson(json) {
+
+  factory DrugsModel.fromJson(Map<String, dynamic> json) {
+    List<MissingPharmacyModel> pharmacyList = [];
+
+    if (json['missing_drugs'] != null) {
+      pharmacyList = (json['missing_drugs'] as List)
+          .map((e) => MissingPharmacyModel.fromJson(e))
+          .toList();
+    }
+
     return DrugsModel(
       id: json['id'],
       name: json['name'],
-      indications: json['indications'],
-      risks: json['risks'],
-      requiresPrescription: json['requires_prescription'],
-      isRare: json['is_rare'],
+      indications: json['indications'] ?? '',
+      risks: json['risks'] ?? '',
+      requiresPrescription: json['requires_prescription'] ?? false,
+      isRare: json['is_rare'] ?? false,
+      pharmacies: pharmacyList,
     );
-  }
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'indications': indications,
-      'risks': risks,
-      'requires_prescription': requiresPrescription,
-      'is_rare': isRare,
-    };
   }
 }

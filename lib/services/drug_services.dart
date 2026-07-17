@@ -4,14 +4,17 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DrugServices {
   static final SupabaseClient supabaseClient = Supabase.instance.client;
-  static Future<List<DrugsModel>> getDrugs() async {
-    final respnse = await supabaseClient
-        .from(SupaBaseKeys.drugs)
-        .select()
-        .order('name', ascending: true);
-    final drugs = respnse.map((e) => DrugsModel.fromJson(e)).toList();
-    return drugs;
-  }
+ static Future<List<DrugsModel>> getDrugs() async {
+  final response = await supabaseClient
+      .from(SupaBaseKeys.drugs)
+      .select('*, missing_drugs(*)')
+      .order('name', ascending: true);
+
+  final drugs =
+      response.map((e) => DrugsModel.fromJson(e)).toList();
+
+  return drugs;
+}
 
   static Future<void> addToFavorites({
     required int userId,
