@@ -10,6 +10,7 @@ class AppStyle {
   static const double body = 15;
   static const double bodySmall = 14;
   static const double caption = 12;
+  static String appIcon = 'assets/images/app_icon.png';
   static TextStyle customText(
     BuildContext context,
     double size,

@@ -13,21 +13,13 @@ class AboutAppView extends StatelessWidget {
         decoration: AppStyle.decoratedBackground(context),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 20,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: ListView(
               children: [
-
-                /// ✅ صورة التطبيق
                 Center(
                   child: Column(
                     children: [
-                      Image.asset(
-                        'assets/images/211.png',
-                        width: 120,
-                      ),
+                      Image.asset(AppStyle.appIcon, width: 150),
                       const SizedBox(height: 10),
                       Text(
                         "المستشار الطبي الذكي",
@@ -127,8 +119,7 @@ class AboutAppView extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon,
-                  color: Theme.of(context).colorScheme.primary),
+              Icon(icon, color: Theme.of(context).colorScheme.primary),
               const Spacer(),
               Text(
                 title,
@@ -144,11 +135,7 @@ class AboutAppView extends StatelessWidget {
           Text(
             content,
             textDirection: TextDirection.rtl,
-            style: AppStyle.customText(
-              context,
-              AppStyle.body,
-              FontWeight.w500,
-            ),
+            style: AppStyle.customText(context, AppStyle.body, FontWeight.w500),
           ),
         ],
       ),

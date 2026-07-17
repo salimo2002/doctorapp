@@ -38,7 +38,10 @@ class ProfileView extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Image.asset('assets/images/211.png', width: 150),
+                      Image.asset(
+                        AppStyle.appIcon,
+                        width: MediaQuery.sizeOf(context).width * .5,
+                      ),
                       SizedBox(height: 5),
                       BlocBuilder<ProfileCubit, ProfileState>(
                         builder: (context, state) {

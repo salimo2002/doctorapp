@@ -35,10 +35,10 @@ class _RegisterViewState extends State<RegisterView> {
   late AuthCubit authCubit;
   @override
   void initState() {
-    phoneController = TextEditingController(text: '963988818024');
-    passwordController = TextEditingController(text: '123');
-    confirmPasswordController = TextEditingController(text: '123');
-    userName = TextEditingController(text: 'سليم');
+    phoneController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+    userName = TextEditingController();
     phoneFocus = FocusNode();
     passwordFocus = FocusNode();
     confirmPasswordFocus = FocusNode();
@@ -76,9 +76,7 @@ class _RegisterViewState extends State<RegisterView> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height * .03),
-                    Image.asset('assets/images/211.png', width: 150),
-                    SizedBox(height: 10),
+                    Image.asset(AppStyle.appIcon, width: 200),
                     Text(
                       'المستشار الذكي',
                       style: AppStyle.containerText(

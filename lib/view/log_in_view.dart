@@ -32,8 +32,8 @@ class _LogInViewState extends State<LogInView> {
     super.initState();
     globalKey = GlobalKey<FormState>();
     authCubit = context.read<AuthCubit>();
-    phoneController = TextEditingController(text: '963988818024');
-    passwordController = TextEditingController(text: '112233');
+    phoneController = TextEditingController();
+    passwordController = TextEditingController();
     phoneFocus = FocusNode();
     passwordFocus = FocusNode();
   }
@@ -63,8 +63,8 @@ class _LogInViewState extends State<LogInView> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height * .08),
-                    Image.asset('assets/images/211.png', width: 150),
+                    SizedBox(height: MediaQuery.of(context).size.height * .05),
+                    Image.asset(AppStyle.appIcon, width: 200),
                     const SizedBox(height: 10),
                     Text(
                       'المستشار الذكي',
@@ -244,9 +244,9 @@ class _LogInViewState extends State<LogInView> {
                       },
                       builder: (context, state) {
                         if (state is AuthLoading) {
-                            return CircularProgressIndicator(
-                              color: Theme.of(context).colorScheme.primary,
-                            );
+                          return CircularProgressIndicator(
+                            color: Theme.of(context).colorScheme.primary,
+                          );
                         }
                         return CustomButton(
                           label: 'تسجيل الدخول',
