@@ -1,7 +1,7 @@
 import 'package:doctorapp/cubits/pharmacyCubit/pharmacy_cubit.dart';
 import 'package:doctorapp/cubits/pharmacyCubit/pharmacy_state.dart';
-import 'package:doctorapp/model/pharmacy_model.dart';
 import 'package:doctorapp/utils/app_style.dart';
+import 'package:doctorapp/utils/format_date.dart';
 import 'package:doctorapp/utils/open_map.dart';
 import 'package:doctorapp/widgets/search_text_field.dart';
 import 'package:doctorapp/widgets/pharmacy_container.dart';
@@ -17,6 +17,25 @@ class PharmaciesView extends StatefulWidget {
 }
 
 class _PharmaciesViewState extends State<PharmaciesView> {
+  late TextEditingController search;
+  late FocusNode searchFoc;
+
+  @override
+  void initState() {
+    super.initState();
+    search = TextEditingController();
+    searchFoc = FocusNode();
+
+    context.read<PharmacyCubit>().loadPharmacies();
+  }
+
+  @override
+  void dispose() {
+    search.dispose();
+    searchFoc.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,11 +59,15 @@ class _PharmaciesViewState extends State<PharmaciesView> {
               height: 40,
               child: SearchTextField(
                 hint: 'ابحث عن صيدلية',
-                controller: TextEditingController(),
-                focusNode: FocusNode(),
+                controller: search,
+                focusNode: searchFoc,
                 ontap: () {},
+                onChanged: (value) {
+                  context.read<PharmacyCubit>().searchPharmacy(value);
+                },
               ),
             ),
+
             const SizedBox(height: 15),
             SizedBox(
               height: 50,
@@ -77,14 +100,14 @@ class _PharmaciesViewState extends State<PharmaciesView> {
                   if (state is PharmacyLoaded) {
                     final cubit = context.read<PharmacyCubit>();
                     if (cubit.currentFilter == PharmacyFilter.all) {
-                      if (state.allPharmacies.isEmpty) {
-                        return const Center(child: Text('لا توجد صيدليات'));
+                      final pharmacies = cubit.filteredAllPharmacies;
+                      if (pharmacies.isEmpty) {
+                        return const Center(child: Text('لا توجد نتائج'));
                       }
                       return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        itemCount: state.allPharmacies.length,
+                        itemCount: pharmacies.length,
                         itemBuilder: (context, index) {
-                          final pharmacy = state.allPharmacies[index];
+                          final pharmacy = pharmacies[index];
                           return PharmacyContainer(
                             pharmacyLabel: pharmacy.name,
                             isOpen: isOpenNow(pharmacy),
@@ -93,7 +116,7 @@ class _PharmaciesViewState extends State<PharmaciesView> {
                             },
                             location: pharmacy.address,
                             address: pharmacy.address,
-                            workingHours: _formatWorkingHours(
+                            workingHours: formatWorkingHours(
                               pharmacy.openingTime,
                               pharmacy.closingTime,
                             ),
@@ -102,16 +125,14 @@ class _PharmaciesViewState extends State<PharmaciesView> {
                         },
                       );
                     }
-                    if (state.onDutyPharmacies.isEmpty) {
-                      return const Center(
-                        child: Text('لا توجد صيدليات مناوبة اليوم'),
-                      );
+                    final onDutyList = cubit.filteredOnDutyPharmacies;
+                    if (onDutyList.isEmpty) {
+                      return const Center(child: Text('لا توجد نتائج'));
                     }
                     return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      itemCount: state.onDutyPharmacies.length,
+                      itemCount: onDutyList.length,
                       itemBuilder: (context, index) {
-                        final onDuty = state.onDutyPharmacies[index];
+                        final onDuty = onDutyList[index];
                         final pharmacy = onDuty.pharmacy;
                         return PharmacyContainer(
                           pharmacyLabel: pharmacy.name,
@@ -137,32 +158,9 @@ class _PharmaciesViewState extends State<PharmaciesView> {
                 },
               ),
             ),
-            SizedBox(height: 5),
           ],
         ),
       ),
     );
-  }
-
-  bool isOpenNow(PharmacyModel pharmacy) {
-    if (pharmacy.openingTime == null || pharmacy.closingTime == null) {
-      return false;
-    }
-    final now = TimeOfDay.now();
-    final nowMinutes = now.hour * 60 + now.minute;
-    final openParts = pharmacy.openingTime!.split(':');
-    final openMinutes = int.parse(openParts[0]) * 60 + int.parse(openParts[1]);
-    final closeParts = pharmacy.closingTime!.split(':');
-    final closeMinutes =
-        int.parse(closeParts[0]) * 60 + int.parse(closeParts[1]);
-    return nowMinutes >= openMinutes && nowMinutes <= closeMinutes;
-  }
-
-  String _formatWorkingHours(String? open, String? close) {
-    if (open == null || close == null) return 'غير محدد';
-
-    final openFormatted = open.substring(0, 5);
-    final closeFormatted = close.substring(0, 5);
-    return 'من $openFormatted حتى $closeFormatted';
   }
 }

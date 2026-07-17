@@ -7,9 +7,9 @@ class SearchTextField extends StatelessWidget {
     required this.hint,
     required this.controller,
     required this.focusNode,
-    required this.ontap,
+    required this.ontap, this.onChanged,
   });
-
+final Function(String)? onChanged;
   final String hint;
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -29,6 +29,7 @@ class SearchTextField extends StatelessWidget {
         ],
       ),
       child: BidiTextField(
+        onChanged:onChanged ,
         controller: controller,
         focusNode: focusNode,
         onTap: ontap,

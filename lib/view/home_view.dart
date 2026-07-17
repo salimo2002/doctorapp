@@ -63,6 +63,9 @@ class _HomeViewState extends State<HomeView> {
                 controller: TextEditingController(),
                 focusNode: FocusNode(),
                 ontap: () {},
+                onChanged: (value) {
+                  context.read<DrugsCubit>().searchDrug(value);
+                },
               ),
             ),
             SizedBox(height: 5),

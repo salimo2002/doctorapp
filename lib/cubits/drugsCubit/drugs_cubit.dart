@@ -1,7 +1,8 @@
-import 'package:doctorapp/cubits/drugsCubit/drugs_state.dart';
-import 'package:doctorapp/model/drugs_model.dart';
-import 'package:doctorapp/services/drug_services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../model/drugs_model.dart';
+import '../../services/drug_services.dart';
+import 'drugs_state.dart';
+
 enum DrugsFilter { all, missing }
 
 class DrugsCubit extends Cubit<DrugsState> {
@@ -9,12 +10,13 @@ class DrugsCubit extends Cubit<DrugsState> {
 
   List<DrugsModel> drugs = [];
   DrugsFilter _currentFilter = DrugsFilter.all;
+  String _searchQuery = '';
 
   Future<void> getDrugs() async {
     emit(DrugsLoading());
     try {
       drugs = await DrugServices.getDrugs();
-      emit(DrugsSuccess(drugs: _applyFilter()));
+      emit(DrugsSuccess(drugs: _applyFilters()));
     } catch (e) {
       emit(DrugsError());
     }
@@ -22,15 +24,26 @@ class DrugsCubit extends Cubit<DrugsState> {
 
   void changeFilter(DrugsFilter filter) {
     _currentFilter = filter;
-    emit(DrugsSuccess(drugs: _applyFilter()));
+    emit(DrugsSuccess(drugs: _applyFilters()));
   }
 
-  List<DrugsModel> _applyFilter() {
-    switch (_currentFilter) {
-      case DrugsFilter.missing:
-        return drugs.where((d) => d.isRare).toList();
-      case DrugsFilter.all:
-      return drugs;
+  void searchDrug(String query) {
+    _searchQuery = query.trim().toLowerCase();
+    emit(DrugsSuccess(drugs: _applyFilters()));
+  }
+
+  List<DrugsModel> _applyFilters() {
+    List<DrugsModel> filtered = drugs;
+    if (_currentFilter == DrugsFilter.missing) {
+      filtered = filtered.where((d) => d.isRare).toList();
     }
+    if (_searchQuery.isNotEmpty) {
+      filtered = filtered.where((drug) {
+        return drug.name.toLowerCase().contains(_searchQuery) ||
+            drug.indications.toLowerCase().contains(_searchQuery);
+      }).toList();
+    }
+
+    return filtered;
   }
 }
