@@ -144,30 +144,7 @@ class _LogInViewState extends State<LogInView> {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-
-                    const SizedBox(height: 5),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        InkWell(
-                          onTap: () {},
-                          child: Text(
-                            'نسيت كلمة المرور؟',
-                            style: AppStyle.containerText(
-                              context,
-                              AppStyle.title2,
-                              FontWeight.bold,
-                              Theme.of(context).colorScheme.primary,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                      ],
-                    ),
-
                     const SizedBox(height: 20),
-
                     BlocConsumer<AuthCubit, AuthState>(
                       listener: (context, state) async {
                         if (state is AuthSuccess) {
@@ -214,7 +191,6 @@ class _LogInViewState extends State<LogInView> {
                               ).colorScheme.primary,
                             ),
                           );
-
                           Navigator.push(
                             context,
                             MaterialPageRoute(
