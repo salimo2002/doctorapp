@@ -10,6 +10,7 @@ import 'package:doctorapp/view/log_in_view.dart';
 import 'package:doctorapp/view/main_views.dart';
 import 'package:doctorapp/view/password_reset_view.dart';
 import 'package:doctorapp/view/personal_info_view.dart';
+import 'package:doctorapp/view/splash_view.dart';
 import 'package:doctorapp/view/usage_policy_view.dart';
 import 'package:doctorapp/view/register_view.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,8 @@ void main(List<String> args) async {
     ),
   );
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+   ChangeNotifierProvider(
+      create: (_) => ThemeProvider()..loadTheme(),
       child: const DoctorApp(),
     ),
   );
@@ -66,8 +67,9 @@ class DoctorApp extends StatelessWidget {
           PasswordResetView.id: (context) => PasswordResetView(),
           AboutAppView.id: (context) => AboutAppView(),
           UsagePolicyView.id: (context) => UsagePolicyView(),
+          SplashView.id: (context) => SplashView(),
         },
-        initialRoute: LogInView.id,
+        initialRoute: SplashView.id,
       ),
     );
   }

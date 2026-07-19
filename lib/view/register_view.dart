@@ -135,6 +135,7 @@ class _RegisterViewState extends State<RegisterView> {
                       controller: phoneController,
                       focusNode: phoneFocus,
                       hint: 'ادخل رقم الهاتف',
+                      inputType: TextInputType.number,
                       suffixIcon: Icon(
                         Icons.email_outlined,
                         color: Theme.of(context).colorScheme.primary,

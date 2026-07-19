@@ -1,5 +1,6 @@
 import 'package:doctorapp/cubits/authCubit/auth_cubit.dart';
 import 'package:doctorapp/cubits/authCubit/auth_state.dart';
+import 'package:doctorapp/utils/app_preferences.dart';
 import 'package:doctorapp/utils/app_style.dart';
 import 'package:doctorapp/view/main_views.dart';
 import 'package:doctorapp/view/otp_view.dart';
@@ -168,11 +169,13 @@ class _LogInViewState extends State<LogInView> {
                     const SizedBox(height: 20),
 
                     BlocConsumer<AuthCubit, AuthState>(
-                      listener: (context, state) {
+                      listener: (context, state) async {
                         if (state is AuthSuccess) {
+                          await AppPreferences.setLoggedIn(true);
+
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               content: Text(
                                 'تم تسجيل الدخول بنجاح',
                                 textAlign: TextAlign.center,
@@ -188,11 +191,8 @@ class _LogInViewState extends State<LogInView> {
                               ).colorScheme.primary,
                             ),
                           );
-                          Navigator.pushNamedAndRemoveUntil(
-                            context,
-                            MainViews.id,
-                            (route) => false,
-                          );
+
+                          Navigator.pushReplacementNamed(context, MainViews.id);
                         }
 
                         if (state is AuthOtpSent) {

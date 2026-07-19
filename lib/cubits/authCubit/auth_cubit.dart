@@ -1,6 +1,7 @@
 import 'package:doctorapp/model/app_users.dart';
 import 'package:doctorapp/services/app_auth_service.dart';
 import 'package:doctorapp/services/otp_service.dart';
+import 'package:doctorapp/utils/app_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'auth_state.dart';
 
@@ -9,7 +10,10 @@ class AuthCubit extends Cubit<AuthState> {
 
   AppUsers? currentUser;
 
-  Future<void> login({required String phone, required String password}) async {
+  Future<void> login({
+    required String phone,
+    required String password,
+  }) async {
     emit(AuthLoading());
 
     try {
@@ -17,17 +21,22 @@ class AuthCubit extends Cubit<AuthState> {
         phoneNumber: phone,
         password: password,
       );
+
       if (user == null) {
         throw Exception('حدث خطأ أثناء تسجيل الدخول');
       }
+
       currentUser = user;
+
       if (user.isWhatsappVerified == false) {
         final sent = await OtpService.sendOtp(phone);
         if (!sent) {
-          throw Exception('فشل إرسال رمز التحقق عبر واتساب');
+          throw Exception('فشل إرسال رمز التحقق');
         }
         emit(AuthOtpSent(phone));
       } else {
+        await AppPreferences.setLoggedIn(true);
+        await AppPreferences.saveUserId(user.id);
         emit(AuthSuccess());
       }
     } catch (e) {
@@ -51,37 +60,52 @@ class AuthCubit extends Cubit<AuthState> {
         age: age,
         job: job,
       );
+
       currentUser = user;
+
       final sent = await OtpService.sendOtp(phone);
       if (!sent) {
-        throw Exception('فشل إرسال رمز التحقق عبر واتساب');
+        throw Exception('فشل إرسال رمز التحقق');
       }
+
       emit(AuthOtpSent(phone));
     } catch (e) {
       emit(AuthFailure(e.toString()));
     }
   }
-Future<void> verifyOtpAndActivate({
-  required String phone,
-  required String code,
-}) async {
-  emit(AuthLoading());
 
-  try {
-    final isValid = OtpService.verifyOtp(code);
+  Future<void> verifyOtpAndActivate({
+    required String phone,
+    required String code,
+  }) async {
+    emit(AuthLoading());
 
-    if (!isValid) {
-      emit(AuthFailure('رمز التحقق غير صحيح'));
-      return;
+    try {
+      final isValid = OtpService.verifyOtp(code);
+
+      if (!isValid) {
+        emit(AuthFailure('رمز التحقق غير صحيح'));
+        return;
+      }
+
+      await AppAuthService.verifyUserPhone(phone);
+
+      if (currentUser != null) {
+        currentUser =
+            currentUser!.copyWith(isWhatsappVerified: true);
+
+        await AppPreferences.setLoggedIn(true);
+        await AppPreferences.saveUserId(currentUser!.id);
+      }
+
+      emit(AuthSuccess());
+    } catch (e) {
+      emit(AuthFailure(e.toString()));
     }
-    await AppAuthService.verifyUserPhone(phone);
-    if (currentUser != null) {
-      currentUser =
-          currentUser!.copyWith(isWhatsappVerified: true);
-    }
-    emit(AuthSuccess());
-  } catch (e) {
-    emit(AuthFailure(e.toString()));
   }
-}
+
+  Future<void> loadUserFromStorage(int userId) async {
+    final user = await AppAuthService.getUserById(userId);
+    currentUser = user;
+  }
 }

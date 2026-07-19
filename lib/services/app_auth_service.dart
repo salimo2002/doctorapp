@@ -83,4 +83,15 @@ static Future<void> verifyUserPhone(String phone) async {
     throw Exception('خطأ أثناء تفعيل الحساب: ${e.toString()}');
   }
 }
+static Future<AppUsers?> getUserById(int id) async {
+  final response = await _client
+      .from('app_users')
+      .select()
+      .eq('id', id)
+      .maybeSingle();
+
+  if (response == null) return null;
+
+  return AppUsers.fromJson(response);
+}
 }

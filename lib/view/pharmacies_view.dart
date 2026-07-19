@@ -105,6 +105,7 @@ class _PharmaciesViewState extends State<PharmaciesView> {
                         return const Center(child: Text('لا توجد نتائج'));
                       }
                       return ListView.builder(
+                        padding: EdgeInsets.zero,
                         itemCount: pharmacies.length,
                         itemBuilder: (context, index) {
                           final pharmacy = pharmacies[index];
@@ -130,6 +131,7 @@ class _PharmaciesViewState extends State<PharmaciesView> {
                       return const Center(child: Text('لا توجد نتائج'));
                     }
                     return ListView.builder(
+                      padding: EdgeInsets.zero,
                       itemCount: onDutyList.length,
                       itemBuilder: (context, index) {
                         final onDuty = onDutyList[index];

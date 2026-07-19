@@ -33,7 +33,7 @@ class _OtpViewState extends State<OtpView> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: BlocConsumer<AuthCubit, AuthState>(
-              listener: (context, state) {
+              listener: (context, state)  {
                 if (state is AuthSuccess) {
                   Navigator.pushAndRemoveUntil(
                     context,
@@ -42,22 +42,22 @@ class _OtpViewState extends State<OtpView> {
                   );
                 }
                 if (state is AuthFailure) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(
-                              duration: Duration(seconds: 1),
-                              content: Text(
-                                state.message,
-                                textAlign: TextAlign.center,
-                                style: AppStyle.containerText(
-                                  context,
-                                  AppStyle.bodySmall,
-                                  FontWeight.bold,
-                                  Colors.white,
-                                ),
-                              ),
-                              backgroundColor: Colors.red,
-                            ),);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text(
+                        state.message,
+                        textAlign: TextAlign.center,
+                        style: AppStyle.containerText(
+                          context,
+                          AppStyle.bodySmall,
+                          FontWeight.bold,
+                          Colors.white,
+                        ),
+                      ),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
                 }
               },
               builder: (context, state) {
